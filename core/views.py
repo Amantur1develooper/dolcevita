@@ -60,44 +60,82 @@ def remove_from_cart(request, product_id):
 
 def cart_detail(request):
     cart = Cart(request)
-    return render(request, "core/cart.html", {"cart": cart})
+    items = list(cart.items_detailed())         # ← один раз собрали
+    total = sum(i["line_total"] for i in items) # ← один раз посчитали
+    return render(request, "core/cart.html", {
+        "cart": cart,               # оставим, если где-то нужен len(cart)
+        "cart_items": items,        # ← используем в шаблоне
+        "cart_total": total,        # ← используем в шаблоне
+    })
+# def cart_detail(request):
+#     cart = Cart(request)
+#     return render(request, "core/cart.html", {"cart": cart})
+
 
 def checkout_whatsapp(request):
-    """
-    Генерируем текст заказа и редиректим в WhatsApp.
-    Номер берём из settings.WHATSAPP_PHONE = '+39XXXXXXXXXX'
-    """
+    
     phone = getattr(settings, "WHATSAPP_PHONE", "").replace("+", "")
     if not phone:
         return HttpResponseBadRequest("WHATSAPP_PHONE не задан в settings")
 
     cart = Cart(request)
-    if len(cart) == 0:
+    items = list(cart.items_detailed())           # ← один список
+    if not items:
         return redirect("core:home")
 
-    lines = ["Dolcevita — новый заказ:"]
-    for item in cart.items_detailed():
-        p = item["product"]
-        lines.append(f"• {p.name} × {item['qty']} = {item['line_total']:.2f}сом")
-    lines.append(f"Итого: {cart.total():.2f}сом")
+    total = sum(i["line_total"] for i in items)
 
-    # необязательные поля клиента (можно добавить простую форму на cart.html)
-    name = request.GET.get("name", "").strip()
-    table = request.GET.get("table", "").strip()  # если dine-in
-    note = request.GET.get("note", "").strip()
-    if name:
-        lines.append(f"Имя: {name}")
-    if table:
-        lines.append(f"Стол: {table}")
-    if note:
-        lines.append(f"Примечание: {note}")
+    lines = ["Dolcevita — новый заказ:"]
+    for it in items:
+        p = it["product"]
+        lines.append(f"• {p.name} × {it['qty']} = {it['line_total']:.2f} сом")
+    lines.append(f"Итого: {total:.2f} сом")
+
+    name  = request.GET.get("name", "").strip()
+    table = request.GET.get("table", "").strip()
+    note  = request.GET.get("note", "").strip()
+    if name:  lines.append(f"Имя: {name}")
+    if table: lines.append(f"Стол/доставка: {table}")
+    if note:  lines.append(f"Примечание: {note}")
 
     text = quote_plus("\n".join(lines))
-    url = f"https://wa.me/{phone}?text={text}"
+    return HttpResponseRedirect(f"https://wa.me/{phone}?text={text}")
+# def checkout_whatsapp(request):
+#     """
+#     Генерируем текст заказа и редиректим в WhatsApp.
+#     Номер берём из settings.WHATSAPP_PHONE = '+39XXXXXXXXXX'
+#     """
+#     phone = getattr(settings, "WHATSAPP_PHONE", "").replace("+", "")
+#     if not phone:
+#         return HttpResponseBadRequest("WHATSAPP_PHONE не задан в settings")
 
-    # По желанию очищаем корзину после перехода:
-    # cart.clear()
-    return HttpResponseRedirect(url)
+#     cart = Cart(request)
+#     if len(cart) == 0:
+#         return redirect("core:home")
+
+#     lines = ["Dolcevita — новый заказ:"]
+#     for item in cart.items_detailed():
+#         p = item["product"]
+#         lines.append(f"• {p.name} × {item['qty']} = {item['line_total']:.2f}сом")
+#     lines.append(f"Итого: {cart.total():.2f}сом")
+
+#     # необязательные поля клиента (можно добавить простую форму на cart.html)
+#     name = request.GET.get("name", "").strip()
+#     table = request.GET.get("table", "").strip()  # если dine-in
+#     note = request.GET.get("note", "").strip()
+#     if name:
+#         lines.append(f"Имя: {name}")
+#     if table:
+#         lines.append(f"Стол: {table}")
+#     if note:
+#         lines.append(f"Примечание: {note}")
+
+#     text = quote_plus("\n".join(lines))
+#     url = f"https://wa.me/{phone}?text={text}"
+
+#     # По желанию очищаем корзину после перехода:
+#     # cart.clear()
+#     return HttpResponseRedirect(url)
 
 # core/views.py
 

@@ -8,13 +8,13 @@
   <section class="space-y-3">
     <h1 class="text-2xl font-semibold mb-2">Корзина</h1>
 
-    {% if cart|length == 0 %}
+    {% if cart_items|length == 0 %}
       <div class="rounded-3xl bg-white/80 backdrop-blur p-6 text-center shadow ring-1 ring-black/5">
         <p class="text-stone-700">Корзина пуста.</p>
         <a href="{% url 'core:home' %}" class="inline-block mt-3 px-4 py-2 rounded-xl bg-stone-900 text-white">К меню</a>
       </div>
     {% else %}
-      {% for item in cart.items_detailed %}
+      {% for item in cart_items %}
         <article class="relative rounded-3xl bg-white/85 backdrop-blur shadow ring-1 ring-black/5 p-3 md:p-4">
           <div class="grid grid-cols-[64px_1fr] md:grid-cols-[88px_1fr_auto] gap-3 md:gap-4 items-center">
             <!-- превью -->
@@ -54,11 +54,11 @@
   </section>
 
   <!-- ИТОГ/ОФОРМЛЕНИЕ -->
-  {% if cart|length != 0 %}
+  {% if cart_items|length != 0 %}
   <aside class="lg:sticky lg:top-24 h-max">
     <div class="rounded-3xl bg-white/85 backdrop-blur p-4 md:p-5 shadow-xl ring-1 ring-black/5">
       <h2 class="text-xl font-semibold">К оплате</h2>
-      <div class="mt-2 text-2xl font-bold">{{ cart.total }}сом</div>
+      <div class="mt-2 text-2xl font-bold">{{ cart_total }}сом</div>
 
       <!-- Данные гостя -> уйдут в WhatsApp (GET) -->
       <form action="{% url 'core:checkout' %}" method="get" class="mt-4 space-y-2">
@@ -80,10 +80,10 @@
 </div>
 
 <!-- Мобильная панель снизу -->
-{% if cart|length != 0 %}
+{% if cart_items|length != 0 %}
 <div class="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur border-t border-black/5">
   <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
-    <div class="text-sm">Итого: <b>{{ cart.total }}сом</b></div>
+    <div class="text-sm">Итого: <b>{{ cart_total }}сом</b></div>
     <a href="{% url 'core:checkout' %}" class="px-4 py-2 rounded-xl text-black font-semibold shadow"
        style="background-image:linear-gradient(90deg,#009246 0 33%,#ffffff 33% 66%,#ce2b37 66% 100%);">
       В WhatsApp
