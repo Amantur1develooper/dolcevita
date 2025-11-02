@@ -60,9 +60,13 @@
 
       <a href="{% url 'core:cart_detail' %}" class="relative inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-emerald-600 text-white font-semibold shadow">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2Zm10 0c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2ZM7.17 14h9.66c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 21.33 5H6.21L5.27 3H2v2h2l3.6 7.59-1.35 2.45C5.52 15.37 6.02 16 6.7 16H20v-2H7.42l.75-1.35Z"/></svg>
-        {% if cart_count %}<span class="absolute -top-2 -right-2 text-xs bg-red-600 text-white rounded-full px-1.5 py-0.5">{{ cart_count }}</span>{% endif %}
-        <span class="hidden sm:inline">Корзина</span>
-      </a>
+        {% if cart_count %}
+    <span id="cart-badge" class="absolute -top-2 -right-2 text-xs bg-red-600 text-white rounded-full px-1.5 py-0.5">{{ cart_count }}</span>
+  {% else %}
+    <span id="cart-badge" class="hidden absolute -top-2 -right-2 text-xs bg-red-600 text-white rounded-full px-1.5 py-0.5">0</span>
+  {% endif %}
+  <span class="hidden sm:inline">Корзина</span>
+</a>
     </div>
     <div class="flag-x h-1 w-full"></div>
   </header>
@@ -104,8 +108,53 @@
     </div>
   </div>
 </footer>
+<div id="toast" class="hidden fixed left-1/2 -translate-x-1/2 bottom-24 z-50">
+  <div class="bg-black text-white px-4 py-2 rounded-full shadow-xl">Добавлено в корзину</div>
+</div>
 
+{% block scripts %}
+<script>
+  // делегирование submit только для форм с data-add-to-cart
+  document.addEventListener('submit', async (e) => {
+    const f = e.target;
+    if (!f.matches('form[data-add-to-cart]')) return;
 
-  {% block scripts %}{% endblock %}
+    e.preventDefault();
+
+    // готовим запрос
+    const csrf = f.querySelector('input[name=csrfmiddlewaretoken]')?.value || '';
+    const res = await fetch(f.action, {
+      method: 'POST',
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest',
+        'X-CSRFToken': csrf,
+      },
+      body: new FormData(f),
+    });
+
+    if (!res.ok) {
+      // если сервер не вернул JSON, просто fallback — обычная отправка
+      f.submit();
+      return;
+    }
+
+    const data = await res.json();
+    // обновляем бейдж
+    const badge = document.getElementById('cart-badge');
+    if (badge) {
+      badge.textContent = data.count ?? data.items_count ?? '0';
+      badge.classList.remove('hidden');
+    }
+    // показываем тост
+    const t = document.getElementById('toast');
+    if (t) {
+      t.classList.remove('hidden');
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(()=>t.classList.add('hidden'), 1400);
+    }
+  });
+</script>
+{% endblock %}
+
 </body>
 </html>

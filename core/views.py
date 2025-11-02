@@ -22,10 +22,24 @@ def add_to_cart(request, product_id):
     get_object_or_404(Product, pk=product_id, is_active=True)
     cart = Cart(request)
     cart.add(product_id, qty)
-    # для SPA-ощущения можно вернуть JSON
+
+    # если AJAX — отдать JSON с новым количеством
     if request.headers.get("x-requested-with") == "XMLHttpRequest":
         return JsonResponse({"ok": True, "count": len(cart)})
+
+    # fallback (если кто-то отправит обычный POST)
     return redirect("core:cart_detail")
+# def add_to_cart(request, product_id):
+#     if request.method != "POST":
+#         return HttpResponseBadRequest("POST only")
+#     qty = int(request.POST.get("qty", 1))
+#     get_object_or_404(Product, pk=product_id, is_active=True)
+#     cart = Cart(request)
+#     cart.add(product_id, qty)
+#     # для SPA-ощущения можно вернуть JSON
+#     if request.headers.get("x-requested-with") == "XMLHttpRequest":
+#         return JsonResponse({"ok": True, "count": len(cart)})
+#     return redirect("core:cart_detail")
 
 def update_cart(request, product_id):
     if request.method != "POST":

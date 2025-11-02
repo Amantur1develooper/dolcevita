@@ -92,8 +92,9 @@
       <div class="text-lg md:text-xl font-bold">{{ p.price }}сом</div>
     </div>
 
-   <form action="{% url 'core:add_to_cart' p.id %}" method="post"
-      class="flex items-center justify-end gap-2 flex-wrap">
+  <form action="{% url 'core:add_to_cart' p.id %}" method="post"
+      class="flex items-center justify-end gap-2 flex-wrap"
+      data-add-to-cart>
   {% csrf_token %}
   <input type="number" name="qty" value="1" min="1"
          class="w-12 sm:w-16 border border-stone-300 rounded-xl px-2 py-1 text-center focus:outline-none focus:ring-2 focus:ring-stone-400">
@@ -105,6 +106,7 @@
     В корзину
   </button>
 </form>
+
 
 
             </article>
