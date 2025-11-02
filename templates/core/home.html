@@ -89,7 +89,7 @@
   <div class="mt-3 md:mt-4 grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-2 items-end">
     <div>
       <div class="text-xs text-stone-400">Цена</div>
-      <div class="text-lg md:text-xl font-bold">сом{{ p.price }}</div>
+      <div class="text-lg md:text-xl font-bold">{{ p.price }}сом</div>
     </div>
 
    <form action="{% url 'core:add_to_cart' p.id %}" method="post"

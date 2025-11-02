@@ -27,7 +27,7 @@
             <!-- инфо -->
             <div class="min-w-0">
               <div class="font-medium leading-snug">{{ item.product.name }}</div>
-              <div class="text-xs text-stone-500 mt-0.5">Цена за шт.: <b>сом{{ item.product.price }}</b></div>
+              <div class="text-xs text-stone-500 mt-0.5">Цена за шт.: <b>{{ item.product.price }}сом</b></div>
             </div>
 
             <!-- управление -->
@@ -46,7 +46,7 @@
           </div>
 
           <div class="mt-2 text-right text-sm">
-            Итого по позиции: <b>сом{{ item.line_total }}</b>
+            Итого по позиции: <b>{{ item.line_total }}сом</b>
           </div>
         </article>
       {% endfor %}
@@ -58,7 +58,7 @@
   <aside class="lg:sticky lg:top-24 h-max">
     <div class="rounded-3xl bg-white/85 backdrop-blur p-4 md:p-5 shadow-xl ring-1 ring-black/5">
       <h2 class="text-xl font-semibold">К оплате</h2>
-      <div class="mt-2 text-2xl font-bold">сом{{ cart.total }}</div>
+      <div class="mt-2 text-2xl font-bold">{{ cart.total }}сом</div>
 
       <!-- Данные гостя -> уйдут в WhatsApp (GET) -->
       <form action="{% url 'core:checkout' %}" method="get" class="mt-4 space-y-2">
@@ -83,7 +83,7 @@
 {% if cart|length != 0 %}
 <div class="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur border-t border-black/5">
   <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
-    <div class="text-sm">Итого: <b>сом{{ cart.total }}</b></div>
+    <div class="text-sm">Итого: <b>{{ cart.total }}сом</b></div>
     <a href="{% url 'core:checkout' %}" class="px-4 py-2 rounded-xl text-black font-semibold shadow"
        style="background-image:linear-gradient(90deg,#009246 0 33%,#ffffff 33% 66%,#ce2b37 66% 100%);">
       В WhatsApp
