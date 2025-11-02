@@ -2,6 +2,7 @@
 from decimal import Decimal
 from django.conf import settings
 from core.models import Product
+from decimal import Decimal
 
 CART_SESSION_KEY = "cart"  # {product_id: qty}
 
@@ -33,26 +34,64 @@ class Cart:
 
     def save(self):
         self.session.modified = True
+        
+    def total(self) -> Decimal:
+        """Общая сумма корзины (Decimal)."""
+        return sum(item["line_total"] for item in self.items_detailed())
 
     def __len__(self):
-        return sum(self.cart.values())
+        """Количество единиц товара в корзине."""
+        return sum(int(qty) for qty in self.cart.values())
+    # def __len__(self):
+    #     return sum(self.cart.values())
+
+    
 
     def items_detailed(self):
-        """Возвращает объекты блюд + qty + сумма по позиции."""
-        pids = [int(pid) for pid in self.cart.keys()]
-        products = Product.objects.in_bulk(pids)
-        for pid, qty in self.cart.items():
-            obj = products.get(int(pid))
-            if not obj:
-                # если блюдо удалено из БД — убрать из корзины
-                self.remove(pid)
+        """
+        Возвращает итератор по позициям корзины с обогащением объектами Product.
+        Без изменения словаря во время итерации.
+        """
+        # делаем снимок текущего словаря, чтобы не словить RuntimeError
+        snapshot_items = list(self.cart.items())  # [(pid_str, qty), ...]
+    
+        # заранее подтягиваем продукты одним запросом
+        pids = [int(pid_str) for pid_str, _ in snapshot_items]
+        products = Product.objects.in_bulk(pids)  # {pid:int -> Product}
+    
+        to_delete = []
+    
+        for pid_str, qty in snapshot_items:
+            try:
+                qty = int(qty)
+            except (TypeError, ValueError):
+                to_delete.append(pid_str)
                 continue
-            line_total = (obj.price or Decimal("0")) * qty
-            yield {
-                "product": obj,
-                "qty": qty,
-                "line_total": line_total,
-            }
+            if qty <= 0:
+                to_delete.append(pid_str)
+                continue
 
-    def total(self):
-        return sum(i["line_total"] for i in self.items_detailed())
+            pid = int(pid_str)
+            obj = products.get(pid)
+            if not obj:
+                # блюдо удалено/неактивно — отметим на удаление после цикла
+                to_delete.append(pid_str)
+                continue
+
+        line_total = (obj.price or Decimal("0")) * qty
+        yield {
+            "product": obj,
+            "qty": qty,
+            "line_total": line_total,
+        }
+
+        # чистим корзину уже после обхода
+        if to_delete:
+            for k in to_delete:
+                self.cart.pop(k, None)
+            self.save()
+
+        def total(self):
+            return sum(i["line_total"] for i in self.items_detailed())
+
+
