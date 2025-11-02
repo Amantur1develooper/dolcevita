@@ -1,0 +1,95 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block hero %}{% endblock %}
+{% block content %}
+
+<div class="grid lg:grid-cols-[1fr_360px] gap-4 lg:gap-6">
+  <!-- СПИСОК ПОЗИЦИЙ -->
+  <section class="space-y-3">
+    <h1 class="text-2xl font-semibold mb-2">Корзина</h1>
+
+    {% if cart|length == 0 %}
+      <div class="rounded-3xl bg-white/80 backdrop-blur p-6 text-center shadow ring-1 ring-black/5">
+        <p class="text-stone-700">Корзина пуста.</p>
+        <a href="{% url 'core:home' %}" class="inline-block mt-3 px-4 py-2 rounded-xl bg-stone-900 text-white">К меню</a>
+      </div>
+    {% else %}
+      {% for item in cart.items_detailed %}
+        <article class="relative rounded-3xl bg-white/85 backdrop-blur shadow ring-1 ring-black/5 p-3 md:p-4">
+          <div class="grid grid-cols-[64px_1fr] md:grid-cols-[88px_1fr_auto] gap-3 md:gap-4 items-center">
+            <!-- превью -->
+            {% if item.product.image %}
+              <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="w-16 h-16 md:w-20 md:h-20 object-cover rounded-2xl">
+            {% else %}
+              <div class="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-stone-100 grid place-items-center text-stone-400 text-xs">Фото</div>
+            {% endif %}
+
+            <!-- инфо -->
+            <div class="min-w-0">
+              <div class="font-medium leading-snug">{{ item.product.name }}</div>
+              <div class="text-xs text-stone-500 mt-0.5">Цена за шт.: <b>сом{{ item.product.price }}</b></div>
+            </div>
+
+            <!-- управление -->
+            <div class="flex md:flex-col items-center md:items-end gap-2 md:gap-2 justify-self-end">
+              <form action="{% url 'core:update_cart' item.product.id %}" method="post" class="flex items-center gap-2">
+                {% csrf_token %}
+                <input type="number" name="qty" value="{{ item.qty }}" min="0"
+                       class="w-16 border border-stone-300 rounded-xl px-2 py-1 text-center focus:outline-none focus:ring-2 focus:ring-stone-400">
+                <button class="px-3 py-1.5 rounded-xl bg-stone-800 text-white text-sm">Обновить</button>
+              </form>
+              <form action="{% url 'core:remove_from_cart' item.product.id %}" method="post">
+                {% csrf_token %}
+                <button class="text-sm text-red-600 hover:underline">Удалить</button>
+              </form>
+            </div>
+          </div>
+
+          <div class="mt-2 text-right text-sm">
+            Итого по позиции: <b>сом{{ item.line_total }}</b>
+          </div>
+        </article>
+      {% endfor %}
+    {% endif %}
+  </section>
+
+  <!-- ИТОГ/ОФОРМЛЕНИЕ -->
+  {% if cart|length != 0 %}
+  <aside class="lg:sticky lg:top-24 h-max">
+    <div class="rounded-3xl bg-white/85 backdrop-blur p-4 md:p-5 shadow-xl ring-1 ring-black/5">
+      <h2 class="text-xl font-semibold">К оплате</h2>
+      <div class="mt-2 text-2xl font-bold">сом{{ cart.total }}</div>
+
+      <!-- Данные гостя -> уйдут в WhatsApp (GET) -->
+      <form action="{% url 'core:checkout' %}" method="get" class="mt-4 space-y-2">
+        <input name="name" class="w-full border border-stone-300 rounded-xl px-3 py-2" placeholder="Имя (необязательно)">
+        <input name="table" class="w-full border border-stone-300 rounded-xl px-3 py-2" placeholder="Стол № / «доставка»">
+        <input name="note"  class="w-full border border-stone-300 rounded-xl px-3 py-2" placeholder="Комментарий (острота, без лука...)">
+        <button class="w-full mt-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-2xl text-black font-semibold shadow-md hover:shadow-lg transition"
+                style="background-image:linear-gradient(90deg,#009246 0 33%,#ffffff 33% 66%,#ce2b37 66% 100%);">
+          <!-- иконка send -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21 23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+          Оформить в WhatsApp
+        </button>
+      </form>
+
+      <p class="mt-3 text-xs text-stone-500">* Заказ не списывает деньги — вы подтверждаете его в чате WhatsApp.</p>
+    </div>
+  </aside>
+  {% endif %}
+</div>
+
+<!-- Мобильная панель снизу -->
+{% if cart|length != 0 %}
+<div class="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur border-t border-black/5">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
+    <div class="text-sm">Итого: <b>сом{{ cart.total }}</b></div>
+    <a href="{% url 'core:checkout' %}" class="px-4 py-2 rounded-xl text-black font-semibold shadow"
+       style="background-image:linear-gradient(90deg,#009246 0 33%,#ffffff 33% 66%,#ce2b37 66% 100%);">
+      В WhatsApp
+    </a>
+  </div>
+</div>
+{% endif %}
+
+{% endblock %}

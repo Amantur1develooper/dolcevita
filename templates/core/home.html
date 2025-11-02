@@ -1,0 +1,131 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- Бумажная текстура фона (если нет файла — просто будет светлый фон) -->
+<div class="min-h-[85vh] bg-[url('{% static "img/paper-texture.jpg" %}')] bg-repeat bg-top/600px lg:bg-top/900px">
+
+  <!-- HERO -->
+  <section class="max-w-6xl mx-auto px-4 pt-6 pb-4">
+    <div class="rounded-3xl bg-white/80 backdrop-blur shadow-xl ring-1 ring-black/5 p-5 md:p-8 flex items-center gap-5">
+      <div class="shrink-0">
+        <!-- Если будет логотип файлом -->
+        <!-- <img src="{% static 'img/dolcevita-logo.png' %}" alt="Dolce Vita Family" class="w-28 md:w-36"> -->
+        <div class="text-2xl md:text-4xl font-semibold italic tracking-wide">
+          Dolce <span class="font-extrabold">Vita</span> Family
+        </div>
+        <div class="text-[11px] md:text-xs uppercase tracking-[0.35em] mt-1 text-stone-500">restaurant</div>
+        <div class="h-1 mt-2 w-28 rounded-full" style="background-image:linear-gradient(90deg,#009246 0 33%,#ffffff 33% 66%,#ce2b37 66% 100%);"></div>
+      </div>
+
+      <div class="flex-1 text-stone-700 text-sm md:text-base">
+        Аутентичная итальянская кухня: дровяная пицца, паста, салаты и десерты.
+        Добавляйте блюда в корзину и оформляйте заказ в WhatsApp одним касанием.
+      </div>
+
+      <a href="#menu" class="hidden sm:inline-flex px-4 py-3 rounded-2xl text-black font-medium shadow-lg transition
+         hover:shadow-xl"
+         style="background-image:linear-gradient(90deg,#009246 0 33%,#ffffff 33% 66%,#ce2b37 66% 100%);">
+        Меню
+      </a>
+    </div>
+  </section>
+
+  <!-- «липкая» полоса категорий -->
+  <div class="sticky top-[56px] z-40 bg-white/90 backdrop-blur border-y border-stone-200">
+    <div class="max-w-6xl mx-auto px-3 py-2 overflow-x-auto no-scrollbar">
+      <div class="flex gap-2 md:gap-3">
+        <a href="#menu" class="px-3 py-2 rounded-xl bg-stone-900 text-white text-sm">Все</a>
+        {% for cat in cats %}
+          <a href="#cat-{{ cat.slug }}" class="px-3 py-2 rounded-xl bg-white text-stone-700 hover:bg-stone-100 text-sm whitespace-nowrap">
+            {{ cat.name }}
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Секция меню -->
+  <section id="menu" class="max-w-6xl mx-auto px-4 py-6">
+    {% for cat in cats %}
+      <section id="cat-{{ cat.slug }}" class="mb-10 scroll-mt-24">
+        <!-- Заголовок категории -->
+        <div class="flex items-center gap-3 mb-4">
+          <div class="flex-1 h-px bg-stone-300"></div>
+          <h2 class="text-xl md:text-2xl font-semibold tracking-wide">
+            {{ cat.name }}
+          </h2>
+          <div class="flex-1 h-px bg-stone-300"></div>
+        </div>
+
+        <!-- Грид карточек -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5">
+          {% for p in cat.products.all %}
+            {% if p.is_active %}
+            <article class="group relative overflow-hidden rounded-3xl bg-white/85 backdrop-blur ring-1 ring-black/5 shadow-lg flex flex-col">
+              <!-- Декор флагом слева -->
+              <span aria-hidden="true" class="absolute inset-y-0 left-0 w-1"
+                style="background-image:linear-gradient(180deg,#009246 0 33%,#ffffff 33% 66%,#ce2b37 66% 100%);"></span>
+
+              <!-- Фото -->
+              {% if p.image %}
+                <img src="{{ p.image.url }}" alt="{{ p.name }}"
+                     class="aspect-[4/3] w-full object-cover transition group-hover:scale-[1.03]">
+              {% else %}
+                <div class="aspect-[4/3] w-full bg-stone-100 grid place-items-center text-stone-400">Фото</div>
+              {% endif %}
+
+              <!-- Контент -->
+             <!-- Контент -->
+<div class="p-3 md:p-4 flex-1 flex flex-col overflow-visible">
+  <div class="min-h-[48px]">
+    <h3 class="text-base md:text-lg font-semibold leading-snug">
+      {{ p.name }}
+    </h3>
+  </div>
+
+  <!-- Было: flex items-end justify-between -->
+  <!-- Стало: grid, чтобы не выбегало за край и не резалось -->
+  <div class="mt-3 md:mt-4 grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-2 items-end">
+    <div>
+      <div class="text-xs text-stone-400">Цена</div>
+      <div class="text-lg md:text-xl font-bold">сом{{ p.price }}</div>
+    </div>
+
+   <form action="{% url 'core:add_to_cart' p.id %}" method="post"
+      class="flex items-center justify-end gap-2 flex-wrap">
+  {% csrf_token %}
+  <input type="number" name="qty" value="1" min="1"
+         class="w-12 sm:w-16 border border-stone-300 rounded-xl px-2 py-1 text-center focus:outline-none focus:ring-2 focus:ring-stone-400">
+  <button type="submit"
+          class="inline-flex items-center justify-center whitespace-nowrap
+                 px-3 md:px-4 py-2 rounded-xl text-black text-sm md:text-[15px] font-medium
+                 shadow-md hover:shadow-lg transition"
+          style="color:#000;background:linear-gradient(90deg,#009246 0 33%,#ffffff 33% 66%,#ce2b37 66% 100%);">
+    В корзину
+  </button>
+</form>
+
+
+            </article>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </section>
+    {% endfor %}
+  </section>
+
+  <!-- Низ страницы: баннер WhatsApp/доставка -->
+  <section class="max-w-6xl mx-auto px-4 pb-10">
+    <div class="rounded-3xl bg-stone-900 text-white p-5 md:p-7 flex flex-col sm:flex-row items-start sm:items-center gap-4 shadow-xl">
+      <div class="text-lg md:text-xl font-semibold">Готовы оформить заказ?</div>
+      <div class="flex-1 text-sm text-stone-200">Соберите блюда в корзину — оплата и подтверждение в WhatsApp.</div>
+      <a href="{% url 'core:cart_detail' %}" class="px-4 py-3 rounded-2xl bg-white text-stone-900 font-semibold shadow">
+        Открыть корзину
+      </a>
+    </div>
+  </section>
+
+</div>
+
+{% endblock %}

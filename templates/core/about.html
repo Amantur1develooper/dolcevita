@@ -1,0 +1,92 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %}О нас — Dolce Vita Family{% endblock %}
+{% block hero %}{% endblock %}
+{% block content %}
+
+<!-- HERO -->
+<section class="max-w-6xl mx-auto">
+  <div class="rounded-3xl bg-white/85 backdrop-blur ring-1 ring-black/5 shadow-xl p-5 md:p-8">
+    <div class="flex flex-col md:flex-row gap-6 items-start">
+      <div class="flex-1">
+        <h1 class="brand text-3xl md:text-5xl font-semibold leading-tight">Ресторанный комплекс «Dolce Vita»</h1>
+        <p class="mt-2 text-stone-700">
+          Частичка Италии в южной столице Кыргызстана: атмосфера уюта, следование итальянским традициям и
+          ручная работа поваров — от выбора меню до интерьера. Здесь работает дровяная помпейская печь, а
+          тесто для пиццы раскатывается вручную — как в Италии. :contentReference[oaicite:1]{index=1}
+        </p>
+        <div class="mt-3 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-stone-600">
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-800 font-semibold">
+            ✅ Бесплатная доставка по городу
+          </span>
+        </div>
+        <div class="flag-x h-1 w-28 mt-4 rounded-full"></div>
+      </div>
+      <div class="md:w-[420px] grid grid-cols-2 gap-3">
+        <div class="card rounded-2xl p-4">
+          <div class="text-xs text-stone-500">Адрес</div>
+          <div class="font-semibold">г. Ош, ул. Шакирова 108а</div>
+        </div>
+        <div class="card rounded-2xl p-4">
+          <div class="text-xs text-stone-500">Часы</div>
+          <div class="text-sm"><b>Dolce Vita:</b> 10:00–00:00</div>
+          <div class="text-sm"><b>Bavaria:</b> 11:00–00:00</div>
+        </div>
+        <a href="tel:+996771111111" class="card rounded-2xl p-4 hover:shadow-lg transition">
+          <div class="text-xs text-stone-500">Телефон</div>
+          <div class="font-semibold">+996 (771) 111111</div>
+        </a>
+        <a href="tel:+996701111111" class="card rounded-2xl p-4 hover:shadow-lg transition">
+          <div class="text-xs text-stone-500">Телефон</div>
+          <div class="font-semibold">+996 (701) 111111</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ШЕФ-ПОВАР -->
+<section class="max-w-6xl mx-auto mt-6">
+  <div class="rounded-3xl bg-white/85 backdrop-blur ring-1 ring-black/5 shadow p-5 md:p-7">
+    <div class="grid md:grid-cols-[1fr_420px] gap-6 items-start">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-semibold">Наш шеф — Massimo Girardi</h2>
+        <p class="mt-2 text-stone-700">
+          Родом из Брешии (север Италии). Для настоящей итальянской пиццы используются ингредиенты,
+          привезённые из Италии; блюда готовятся быстро, чтобы сохранить истинный вкус продуктов —
+          паста, ризотто, пицца, лазанья, равиоли, прошутто, джелато и многое другое. Главный секрет —
+          вкладывать душу в каждое блюдо. :contentReference[oaicite:2]{index=2}
+        </p>
+      </div>
+      <div class="card rounded-3xl p-5">
+        <div class="text-sm text-stone-600">Бронирование столов</div>
+        <div class="mt-1 text-lg font-semibold">+996 (771) 111111, +996 (701) 111111</div>
+        <div class="text-sm text-stone-600 mt-1">г. Ош, ул. Шакирова 108а</div>
+        <a href="https://maps.google.com/?q=Osh,+Shakirova+108a" target="_blank"
+           class="mt-3 inline-flex px-4 py-2 rounded-xl bg-stone-900 text-white">Показать на карте</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- БЛОК О КОМПЛЕКСЕ -->
+<section class="max-w-6xl mx-auto mt-6">
+  <div class="rounded-3xl bg-white/85 backdrop-blur ring-1 ring-black/5 shadow p-5 md:p-7">
+    <h2 class="text-2xl md:text-3xl font-semibold">Dolce Vita & Bavaria</h2>
+    <p class="mt-2 text-stone-700">
+      Рядом с «Dolce Vita» работает ресторан-пивоварня «Bavaria» — место для встреч, романтических вечеров
+      и праздников. Есть VIP-кабинки. Проект задуман как новый формат отдыха с индивидуальным подходом и
+      клубной системой скидок — каждый гость найдёт «свою» Италию. :contentReference[oaicite:3]{index=3}
+    </p>
+    <div class="mt-4 flex flex-wrap gap-2">
+      <a href="{% url 'core:home' %}" class="px-4 py-2 rounded-xl bg-white ring-1 ring-black/10 shadow">Меню</a>
+      <a href="{% url 'core:contacts' %}" class="px-4 py-2 rounded-xl bg-white ring-1 ring-black/10 shadow">Контакты</a>
+      <a href="{% url 'core:checkout' %}" class="px-4 py-2 rounded-xl text-black shadow"
+         style="background-image:linear-gradient(90deg,#009246 0 33%,#ffffff 33% 66%,#ce2b37 66% 100%);">
+        Оформить заказ в WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

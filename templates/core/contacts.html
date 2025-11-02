@@ -1,0 +1,77 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %}Контакты — Dolce Vita Family{% endblock %}
+{% block hero %}{% endblock %}
+{% block content %}
+
+<!-- HERO -->
+<section class="max-w-6xl mx-auto">
+  <div class="rounded-3xl bg-white/85 backdrop-blur ring-1 ring-black/5 shadow-xl p-5 md:p-8 flex flex-col md:flex-row gap-6">
+    <div class="flex-1">
+      <h1 class="brand text-3xl md:text-5xl font-semibold leading-tight">Свяжитесь с нами</h1>
+      <p class="mt-2 text-stone-700">Бронирование столов, мероприятия, доставка — мы на связи каждый день.</p>
+      <div class="mt-3 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-stone-600">
+        <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-emerald-100 text-emerald-800">
+          <!-- free delivery badge -->
+          ✅ Бесплатная доставка по городу
+        </span>
+      </div>
+      <div class="flag-x h-1 w-28 mt-4 rounded-full"></div>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:w-[420px]">
+      <a href="tel:+996771111111" class="card px-4 py-3 rounded-2xl hover:shadow-lg transition">
+        <div class="text-xs text-stone-500">Телефон</div>
+        <div class="text-lg font-semibold">+996 (771) 111111</div>
+      </a>
+      <a href="tel:+996701111111" class="card px-4 py-3 rounded-2xl hover:shadow-lg transition">
+        <div class="text-xs text-stone-500">Телефон</div>
+        <div class="text-lg font-semibold">+996 (701) 111111</div>
+      </a>
+      <a href="https://maps.google.com/?q=Osh,+Shakirova+108a" target="_blank" class="card px-4 py-3 rounded-2xl hover:shadow-lg transition">
+        <div class="text-xs text-stone-500">Адрес</div>
+        <div class="font-semibold">г. Ош, ул. Шакирова 108а</div>
+      </a>
+      <div class="card px-4 py-3 rounded-2xl">
+        <div class="text-xs text-stone-500">Часы работы</div>
+        <div class="text-sm"><b>Dolce Vita:</b> 10:00–00:00</div>
+        <div class="text-sm"><b>Bavaria:</b> 11:00–00:00</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- КНОПКИ -->
+<section class="max-w-6xl mx-auto mt-4 grid sm:grid-cols-2 gap-3">
+  <a href="{% url 'core:checkout' %}" class="rounded-2xl px-5 py-4 text-black font-semibold shadow-md hover:shadow-lg transition text-center"
+     style="background-image:linear-gradient(90deg,#009246 0 33%,#ffffff 33% 66%,#ce2b37 66% 100%);">
+     Оформить заказ в WhatsApp
+  </a>
+  <a href="mailto:info@dolcevita.example" class="rounded-2xl px-5 py-4 bg-white/85 backdrop-blur ring-1 ring-black/5 text-stone-900 font-semibold text-center shadow-md hover:shadow-lg transition">
+     Написать на Email
+  </a>
+</section>
+
+<!-- КАРТА -->
+<section class="max-w-6xl mx-auto mt-6">
+  <div class="rounded-3xl overflow-hidden ring-1 ring-black/10 shadow-lg">
+    <iframe
+      src="https://www.google.com/maps?q=Osh,+Shakirova+108a&output=embed"
+      width="100%" height="360" style="border:0;" allowfullscreen="" loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</section>
+
+<!-- БЛОК «Мы в соцсетях» -->
+<section class="max-w-6xl mx-auto mt-6">
+  <div class="rounded-3xl bg-white/85 backdrop-blur ring-1 ring-black/5 p-4 md:p-5">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+      <div class="text-stone-700">Следите за новостями и акциями:</div>
+      <div class="flex items-center gap-2">
+        <a href="https://www.facebook.com/" target="_blank" class="px-4 py-2 rounded-xl bg-stone-900 text-white">Facebook</a>
+        <a href="https://www.instagram.com/" target="_blank" class="px-4 py-2 rounded-xl bg-stone-900 text-white">Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
