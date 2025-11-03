@@ -1,7 +1,11 @@
 {% extends "core/base.html" %}
 {% load static %}
 {% block content %}
-
+<style>
+  @media (max-width: 460px) { /* >= lg */
+    .hide-from-lg { display: none; }
+  }
+</style>
 <!-- Бумажная текстура фона (если нет файла — просто будет светлый фон) -->
 <div class="min-h-[85vh] bg-[url('{% static "img/paper-texture.jpg" %}')] bg-repeat bg-top/600px lg:bg-top/900px">
 
@@ -18,7 +22,7 @@
         <div class="h-1 mt-2 w-28 rounded-full" style="background-image:linear-gradient(90deg,#009246 0 33%,#ffffff 33% 66%,#ce2b37 66% 100%);"></div>
       </div>
 
-      <div class="flex-1 text-stone-700 text-sm md:text-base">
+      <div class="flex-1 text-stone-700 text-sm hide-from-lg">
         Аутентичная итальянская кухня: дровяная пицца, паста, салаты и десерты.
         Добавляйте блюда в корзину и оформляйте заказ в WhatsApp одним касанием.
       </div>

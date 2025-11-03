@@ -43,33 +43,57 @@
 </head>
 <body>
 
-  <!-- ШАПКА -->
-  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-black/5">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-      <a href="{% url 'core:home' %}" class="flex items-center gap-3">
-        <!-- Если есть файл логотипа — покажи -->
-        <!-- <img src="{% static 'img/dolcevita-logo.png' %}" class="h-8 w-auto hidden sm:block" alt="Dolce Vita"> -->
-        <div class="brand text-2xl sm:text-3xl font-semibold italic">Dolce <span class="font-bold not-italic">Vita</span> Family</div>
-      </a>
+<!-- ШАПКА -->
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-black/5">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+    <a href="{% url 'core:home' %}" class="flex items-center gap-3">
+      <div class="brand text-2xl sm:text-3xl font-semibold italic">
+        Dolce <span class="font-bold not-italic">Vita</span> Family
+      </div>
+    </a>
 
-      <nav class="hidden sm:flex items-center gap-5 text-sm text-stone-700">
-        <a href="{% url 'core:home' %}" class="hover:text-black">Меню</a>
-        <a href="{% url 'core:about' %}" class="hover:text-black">О нас</a>
-        <a href="{% url 'core:contacts' %}" class="hover:text-black">Контакты</a>
-      </nav>
+    <!-- Десктоп-меню -->
+    <nav class="hidden md:flex items-center gap-5 text-sm text-stone-700">
+      <a href="{% url 'core:home' %}" class="hover:text-black">Меню</a>
+      <a href="{% url 'core:about' %}" class="hover:text-black">О нас</a>
+      <a href="{% url 'core:contacts' %}" class="hover:text-black">Контакты</a>
+    </nav>
 
+    <div class="flex items-center gap-2">
+      <!-- Бургер только на мобилке -->
+      <button id="nav-toggle" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl border border-stone-300">
+        <span class="sr-only">Открыть меню</span>
+        <!-- иконка -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+
+      <!-- Корзина всегда видима -->
       <a href="{% url 'core:cart_detail' %}" class="relative inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-emerald-600 text-white font-semibold shadow">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2Zm10 0c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2ZM7.17 14h9.66c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 21.33 5H6.21L5.27 3H2v2h2l3.6 7.59-1.35 2.45C5.52 15.37 6.02 16 6.7 16H20v-2H7.42l.75-1.35Z"/></svg>
         {% if cart_count %}
-    <span id="cart-badge" class="absolute -top-2 -right-2 text-xs bg-red-600 text-white rounded-full px-1.5 py-0.5">{{ cart_count }}</span>
-  {% else %}
-    <span id="cart-badge" class="hidden absolute -top-2 -right-2 text-xs bg-red-600 text-white rounded-full px-1.5 py-0.5">0</span>
-  {% endif %}
-  <span class="hidden sm:inline">Корзина</span>
-</a>
+          <span id="cart-badge" class="absolute -top-2 -right-2 text-xs bg-red-600 text-white rounded-full px-1.5 py-0.5">{{ cart_count }}</span>
+        {% else %}
+          <span id="cart-badge" class="hidden absolute -top-2 -right-2 text-xs bg-red-600 text-white rounded-full px-1.5 py-0.5">0</span>
+        {% endif %}
+        <span class="hidden sm:inline">Корзина</span>
+      </a>
     </div>
-    <div class="flag-x h-1 w-full"></div>
-  </header>
+  </div>
+  <div class="flag-x h-1 w-full"></div>
+
+  <!-- Мобильное выпадающее меню -->
+  <div id="mobile-menu" class="md:hidden hidden border-t border-black/5 bg-white/95 backdrop-blur">
+    <div class="max-w-6xl mx-auto px-4 py-3 grid grid-cols-1 gap-2 text-stone-800">
+      <a class="px-3 py-2 rounded-lg hover:bg-stone-100" href="{% url 'core:home' %}">Меню</a>
+      <a class="px-3 py-2 rounded-lg hover:bg-stone-100" href="{% url 'core:about' %}">О нас</a>
+      <a class="px-3 py-2 rounded-lg hover:bg-stone-100" href="{% url 'core:contacts' %}">Контакты</a>
+    </div>
+  </div>
+</header>
+
+
 
   <!-- HERO (опционально переопределяем) -->
   {% block hero %}
@@ -85,19 +109,23 @@
   {% endblock %}
 
   <!-- ОСНОВНОЙ КОНТЕНТ -->
-  <main class="max-w-6xl mx-auto px-4 py-6">
+  <main class="max-w-6xl mx-auto px-4 py-6 pb-24 md:pb-6">
     {% block content %}{% endblock %}
   </main>
+<!-- НИЖНЯЯ МОБИЛЬНАЯ ПАНЕЛЬ (таб-бар) -->
+
+{% block votchap %}
+  
 
   <!-- Плавающая кнопка (ведёт в корзину/чекаут) -->
   <a href="{% url 'core:cart_detail' %}"
-     class="fixed right-4 bottom-4 z-50 inline-flex items-center gap-2 px-4 py-3 rounded-full text-white font-semibold shadow-xl"
+     class="fixed right-4 bottom-3 z-50 inline-flex items-center gap-2 px-4 py-3 rounded-full text-white font-semibold shadow-xl"
      style="background:#25D366">
      <!-- иконка whatsapp -->
      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 32 32" fill="currentColor"><path d="M19.11 17.34c-.28-.14-1.62-.8-1.87-.9-.25-.09-.43-.14-.61.14-.18.27-.7.9-.86 1.08-.16.18-.32.2-.6.07-.28-.14-1.19-.44-2.27-1.4-.84-.75-1.41-1.68-1.57-1.96-.16-.27-.02-.42.12-.56.12-.12.28-.32.42-.48.14-.16.18-.27.28-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.46-.83-2-.22-.53-.44-.46-.61-.47-.16-.01-.34-.01-.52-.01-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.28 0 1.34.99 2.63 1.13 2.8.14.18 1.95 2.98 4.72 4.18.66.28 1.18.45 1.58.57.66.21 1.26.18 1.73.11.53-.08 1.62-.66 1.85-1.3.23-.64.23-1.2.16-1.31-.07-.11-.25-.18-.53-.32z"/><path d="M26.66 5.34C23.79 2.48 20.03 1 16 1 7.72 1 1 7.72 1 16c0 2.64.69 5.22 2 7.49L1 31l7.69-1.97A14.87 14.87 0 0 0 16 31c8.28 0 15-6.72 15-15 0-4.03-1.48-7.79-4.34-10.66zM16 28.33c-2.47 0-4.88-.66-6.98-1.92l-.5-.3-4.56 1.17 1.22-4.45-.33-.52A12.29 12.29 0 0 1 3.67 16c0-6.81 5.52-12.33 12.33-12.33 3.29 0 6.38 1.28 8.71 3.61a12.24 12.24 0 0 1 3.62 8.72c0 6.81-5.53 12.33-12.33 12.33z"/></svg>
      Заказать в WhatsApp
   </a>
-
+{% endblock votchap %}
   <!-- ФУТЕР -->
 <footer class="mt-10 border-t border-black/5 bg-white/70 backdrop-blur">
   <div class="flag-x h-1 w-full"></div>
@@ -113,6 +141,39 @@
 </div>
 
 {% block scripts %}
+<script>
+  // Бургер
+  (function(){
+    const btn = document.getElementById('nav-toggle');
+    const menu = document.getElementById('mobile-menu');
+    if (btn && menu) {
+      btn.addEventListener('click', ()=> menu.classList.toggle('hidden'));
+      // закрывать при переходе по ссылке
+      menu.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=> menu.classList.add('hidden')));
+    }
+  })();
+
+  // Синхронизировать бейдж в нижней панели, если есть верхний
+  (function(){
+    const topBadge = document.getElementById('cart-badge');
+    const bottomBadge = document.getElementById('cart-badge-bottom');
+    function syncBadges() {
+      if (!topBadge || !bottomBadge) return;
+      const v = (topBadge.textContent || '0').trim();
+      if (parseInt(v, 10) > 0) {
+        bottomBadge.textContent = v;
+        bottomBadge.classList.remove('hidden');
+      } else {
+        bottomBadge.classList.add('hidden');
+      }
+    }
+    syncBadges();
+    // Перехватыватель add-to-cart из твоего кода уже обновляет #cart-badge — дёрнем и низ
+    document.addEventListener('cart:updated', syncBadges);
+  })();
+  document.dispatchEvent(new Event('cart:updated'));
+</script>
+
 <script>
   // делегирование submit только для форм с data-add-to-cart
   document.addEventListener('submit', async (e) => {

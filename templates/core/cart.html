@@ -15,40 +15,43 @@
       </div>
     {% else %}
       {% for item in cart_items %}
-        <article class="relative rounded-3xl bg-white/85 backdrop-blur shadow ring-1 ring-black/5 p-3 md:p-4">
-          <div class="grid grid-cols-[64px_1fr] md:grid-cols-[88px_1fr_auto] gap-3 md:gap-4 items-center">
-            <!-- превью -->
-            {% if item.product.image %}
-              <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="w-16 h-16 md:w-20 md:h-20 object-cover rounded-2xl">
-            {% else %}
-              <div class="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-stone-100 grid place-items-center text-stone-400 text-xs">Фото</div>
-            {% endif %}
+       <article class="relative rounded-3xl bg-white/85 backdrop-blur shadow ring-1 ring-black/5 p-3 md:p-4">
+  <!-- Сетка: мобилы — 2 колонки, на md — 3 -->
+  <div class="grid grid-cols-[64px_1fr] md:grid-cols-[88px_1fr_auto] gap-3 md:gap-4 items-center">
+    <!-- превью -->
+    {% if item.product.image %}
+      <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="w-16 h-16 md:w-20 md:h-20 object-cover rounded-2xl">
+    {% else %}
+      <div class="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-stone-100 grid place-items-center text-stone-400 text-xs">Фото</div>
+    {% endif %}
 
-            <!-- инфо -->
-            <div class="min-w-0">
-              <div class="font-medium leading-snug">{{ item.product.name }}</div>
-              <div class="text-xs text-stone-500 mt-0.5">Цена за шт.: <b>{{ item.product.price }}сом</b></div>
-            </div>
+    <!-- инфо -->
+    <div class="min-w-0">
+      <div class="font-medium leading-snug">{{ item.product.name }}</div>
+      <div class="text-xs text-stone-500 mt-0.5">Цена за шт.: <b>{{ item.product.price }}сом</b></div>
+    </div>
 
-            <!-- управление -->
-            <div class="flex md:flex-col items-center md:items-end gap-2 md:gap-2 justify-self-end">
-              <form action="{% url 'core:update_cart' item.product.id %}" method="post" class="flex items-center gap-2">
-                {% csrf_token %}
-                <input type="number" name="qty" value="{{ item.qty }}" min="0"
-                       class="w-16 border border-stone-300 rounded-xl px-2 py-1 text-center focus:outline-none focus:ring-2 focus:ring-stone-400">
-                <button class="px-3 py-1.5 rounded-xl bg-stone-800 text-white text-sm">Обновить</button>
-              </form>
-              <form action="{% url 'core:remove_from_cart' item.product.id %}" method="post">
-                {% csrf_token %}
-                <button class="text-sm text-red-600 hover:underline">Удалить</button>
-              </form>
-            </div>
-          </div>
+    <!-- управление: Мобилы — на новую строку и вправо; MD+ — в 3-й колонке и вправо -->
+    <div class="col-span-2 md:col-span-1 md:justify-self-end flex flex-wrap md:flex-col items-center md:items-end gap-2">
+      <form action="{% url 'core:update_cart' item.product.id %}" method="post" class="flex items-center gap-2">
+        {% csrf_token %}
+        <input type="number" name="qty" value="{{ item.qty }}" min="0"
+               class="w-16 border border-stone-300 rounded-xl px-2 py-1 text-center focus:outline-none focus:ring-2 focus:ring-stone-400">
+        <button class="px-3 py-1.5 rounded-xl bg-stone-800 text-white text-sm">Обновить</button>
+      </form>
+      <form action="{% url 'core:remove_from_cart' item.product.id %}" method="post" class="inline-block">
+        {% csrf_token %}
+        <button class="text-sm text-red-600 hover:underline">Удалить</button>
+      </form>
+    </div>
+  </div>
 
-          <div class="mt-2 text-right text-sm">
-            Итого по позиции: <b>{{ item.line_total }}сом</b>
-          </div>
-        </article>
+  <!-- Итого: на мобиле растяни на 2 колонки -->
+  <div class="mt-2 text-right text-sm col-span-2 md:col-span-3">
+    Итого по позиции: <b>{{ item.line_total }}сом</b>
+  </div>
+</article>
+
       {% endfor %}
     {% endif %}
   </section>
@@ -78,7 +81,8 @@
   </aside>
   {% endif %}
 </div>
-
+{% block votchap %}
+{% endblock votchap %}
 <!-- Мобильная панель снизу -->
 {% if cart_items|length != 0 %}
 <div class="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur border-t border-black/5">
