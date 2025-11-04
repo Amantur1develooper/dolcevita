@@ -1,4 +1,7 @@
 {% load static %}
+{% comment %} {% load i18n %} {% endcomment %}
+{% comment %} {% load i18n i18n_attrs %} {% endcomment %}
+{% load i18n i18n_attrs %}
 <!doctype html>
 <html lang="ru">
 <head>
@@ -68,6 +71,17 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
       </button>
+      
+<form action="{% url 'set_language' %}" method="post" class="flex items-center gap-2">
+  {% csrf_token %}
+  <input type="hidden" name="next" value="{{ request.get_full_path }}">
+  <select name="language" class="border rounded-lg px-2 py-1 text-sm" onchange="this.form.submit()">
+    <option value="ky" {% if LANGUAGE_CODE == 'ky' %}selected{% endif %}>Кыргызча</option>
+    <option value="ru" {% if LANGUAGE_CODE == 'ru' %}selected{% endif %}>Русский</option>
+    <option value="en" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>English</option>
+  </select>
+</form>
+
 
       <!-- Корзина всегда видима -->
       <a href="{% url 'core:cart_detail' %}" class="relative inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-emerald-600 text-white font-semibold shadow">

@@ -4,6 +4,9 @@ from django.utils.translation import gettext_lazy as _
 
 class Category(models.Model):
     name = models.CharField(_("Название"), max_length=120)
+    name_ky = models.CharField(max_length=255, blank=True, null=True, default="", verbose_name="Аталышы (KY)")
+    name_en = models.CharField(max_length=255, blank=True, null=True, default="", verbose_name="Name (EN)")
+
     slug = models.SlugField(unique=True)
 
     class Meta:
@@ -18,6 +21,9 @@ class Category(models.Model):
 class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name="products")
     name = models.CharField(_("Название"), max_length=180)
+    name_ky = models.CharField(max_length=255, blank=True, null=True, default="", verbose_name="Аталышы (KY)")
+    name_en = models.CharField(max_length=255, blank=True, null=True, default="", verbose_name="Name (EN)")
+
     slug = models.SlugField(unique=True)
     price = models.DecimalField(_("Цена"), max_digits=10, decimal_places=2)
     is_active = models.BooleanField(default=True)

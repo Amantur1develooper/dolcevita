@@ -37,12 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core'
+    'core',
+    #  "modeltranslation",  
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "django.middleware.locale.LocaleMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -106,13 +108,32 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+# MODELTRANSLATION_DEFAULT_LANGUAGE = "ru"
+# MODELTRANSLATION_LANGUAGES = ("ky", "ru", "en")
+# MODELTRANSLATION_FALLBACK_LANGUAGES = {
+#     "default": ("ru", "en"),  # если нет ky -> ru -> en
+# }
+# MODELTRANSLATION_AUTO_POPULATE = True  # при сохранении подставит базовый текст в пустые переводы
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = "ru"             # базовый язык—русский
+TEMPLATES[0]["OPTIONS"]["context_processors"] += [
+    "core.context_processors.language_codes",    # добавили
+]
+LANGUAGES = [
+    ("ky", "Кыргызча"),
+    ("ru", "Русский"),
+    ("en", "English"),
+]
 
 TIME_ZONE = 'UTC'
+USE_I18N = True
+LANGUAGE_CODE = "ru"
+LANGUAGES = [("ky","Кыргызча"),("ru","Русский"),("en","English")]
+LOCALE_PATHS = [BASE_DIR / "locale"]
+# LOCALE_PATHS = [BASE_DIR / "locale"]
 
 USE_I18N = True
 
