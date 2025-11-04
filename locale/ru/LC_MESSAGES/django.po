@@ -16,23 +16,25 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: core/models.py:6 core/models.py:23
 msgid "Название"
-msgstr "Title"
+msgstr ""
 
 #: core/models.py:28 templates/core/home.html:96
 msgid "Цена"
-msgstr "Price"
+msgstr ""
 
 #: templates/core/about.html:4
 msgid "О нас — Dolce Vita Family"
-msgstr "About us — Dolce Vita Family"
+msgstr ""
 
 #: templates/core/about.html:15
 msgid "Ресторанный комплекс «Dolce Vita»"
-msgstr "Restaurant complex “Dolce Vita”"
+msgstr ""
 
 #: templates/core/about.html:19
 msgid ""
@@ -44,17 +46,10 @@ msgid ""
 "          а тесто для пиццы раскатывается вручную — как в Италии.\n"
 "          "
 msgstr ""
-"\n"
-" A piece of Italy in the southern capital of Kyrgyzstan: a cozy atmosphere, "
-"following Italian traditions\n"
-" and the handiwork of the chefs — from the menu selection to the interior. "
-"Here there is a wood-burning Pompeian oven,\n"
-" and the pizza dough is rolled out by hand — just like in Italy.\n"
-" "
 
 #: templates/core/about.html:29
 msgid "Бесплатная доставка по городу"
-msgstr "Free city delivery"
+msgstr ""
 
 #: templates/core/about.html:32
 msgid "Halal — Dolce Vita & Mone"
@@ -62,15 +57,15 @@ msgstr ""
 
 #: templates/core/about.html:41
 msgid "Адрес"
-msgstr "Address"
+msgstr ""
 
 #: templates/core/about.html:42 templates/core/about.html:83
 msgid "г. Ош, ул. Шакирова 108а"
-msgstr "Osh, Shakirova Street 108a"
+msgstr ""
 
 #: templates/core/about.html:46
 msgid "Часы"
-msgstr "Watch"
+msgstr ""
 
 #: templates/core/about.html:47 templates/core/about.html:48
 msgid "10:00–00:00"
@@ -78,11 +73,11 @@ msgstr ""
 
 #: templates/core/about.html:52 templates/core/about.html:57
 msgid "Телефон"
-msgstr "Telephone"
+msgstr ""
 
 #: templates/core/about.html:70
 msgid "Наш шеф — Massimo Girardi"
-msgstr "Our chef is Massimo Girardi"
+msgstr ""
 
 #: templates/core/about.html:72
 msgid ""
@@ -94,21 +89,14 @@ msgid ""
 "          Главный секрет — вкладывать душу в каждое блюдо.\n"
 "          "
 msgstr ""
-"\n"
-" From Brescia (northern Italy). For a real Italian pizza use ingredients "
-"from Italy.\n"
-" Cook quickly to preserve the taste: pasta, risotto, pizza, lasagna, "
-"ravioli, gelato and more.\n"
-" The main secret is to put your soul into each dish.\n"
-" "
 
 #: templates/core/about.html:81
 msgid "Бронирование столов"
-msgstr "Table reservations"
+msgstr ""
 
 #: templates/core/about.html:86
 msgid "Показать на карте"
-msgstr "Show on the map"
+msgstr ""
 
 #: templates/core/about.html:98
 msgid ""
@@ -119,123 +107,95 @@ msgid ""
 "гостей. Есть уютные зоны и VIP-кабинки.\n"
 "      "
 msgstr ""
-"\n"
-" Next to “Dolce Vita”, there is a restaurant <b>Mone</b> on the <b>3rd "
-"floor</b> — a place for meetings, romantic evenings\n"
-" and celebrations. Both restaurants are <b>Halal</b>, respecting guests’ "
-"traditions. Cozy areas and VIP rooms are available.\n"
-" "
 
 #: templates/core/about.html:105 templates/core/base.html:57
 #: templates/core/base.html:105 templates/core/home.html:33
 msgid "Меню"
-msgstr "Menu"
+msgstr ""
 
 #: templates/core/about.html:106 templates/core/base.html:59
 #: templates/core/base.html:107
 msgid "Контакты"
-msgstr "Contacts"
+msgstr ""
 
 #: templates/core/about.html:109 templates/core/base.html:137
-#, fuzzy
-#| msgid "Готовы оформить заказ?"
 msgid "Оформить заказ в WhatsApp"
-msgstr "Are you ready to place an order?"
+msgstr ""
 
 #: templates/core/base.html:10
 msgid "Dolce Vita Family — italian restaurant"
 msgstr ""
 
 #: templates/core/base.html:11
-#, fuzzy
-#| msgid ""
-#| "Аутентичная итальянская кухня: дровяная пицца, паста, салаты и десерты.\n"
-#| "        Добавляйте блюда в корзину и оформляйте заказ в WhatsApp одним "
-#| "касанием."
 msgid ""
 "Аутентичная итальянская кухня: пицца из печи, паста, салаты. Быстрый заказ в "
 "WhatsApp."
 msgstr ""
-"Authentic Italian cuisine: wood-fired pizza, pasta, salads, and desserts.\n"
-"Add dishes to your cart and place your order in WhatsApp with onetouch."
 
 #: templates/core/base.html:49
 msgid "На главную"
-msgstr "Go to the main page"
+msgstr ""
 
 #: templates/core/base.html:56
 msgid "Основное меню"
-msgstr "Main menu"
+msgstr ""
 
 #: templates/core/base.html:58 templates/core/base.html:106
 msgid "О нас"
-msgstr "About us"
+msgstr ""
 
 #: templates/core/base.html:67
-#, fuzzy
-#| msgid "Открыть корзину"
 msgid "Открыть меню"
-msgstr "Open the shopping cart"
+msgstr ""
 
 #: templates/core/base.html:74
 msgid "Выбор языка"
-msgstr "Language selection"
+msgstr ""
 
 #: templates/core/base.html:87
-#, fuzzy
-#| msgid "Открыть корзину"
 msgid "Перейти в корзину"
-msgstr "Open the shopping cart"
+msgstr ""
 
 #: templates/core/base.html:96 templates/core/cart.html:9
-#, fuzzy
-#| msgid "В корзину"
 msgid "Корзина"
-msgstr "in a basket"
+msgstr ""
 
 #: templates/core/base.html:103
 msgid "Мобильное меню"
-msgstr "Mobile menu"
+msgstr ""
 
 #: templates/core/base.html:119
 msgid ""
 "Печь на дровах, свежая паста, салаты и десерты. Сбор заказа — в WhatsApp."
 msgstr ""
-"Wood-fired oven, fresh pasta, salads, and desserts. Order collection is available via WhatsApp."
 
 #: templates/core/base.html:142
-#, fuzzy
-#| msgid "Оформить в WhatsApp"
 msgid "Заказать в WhatsApp"
-msgstr "Apply on WhatsApp"
+msgstr ""
 
 #: templates/core/base.html:152
 msgid "Пицца из печи · Паста · Десерты"
-msgstr "Pizza from the oven · Pasta · Desserts"
+msgstr ""
 
 #: templates/core/base.html:158
-#, fuzzy
-#| msgid "В корзину"
 msgid "Добавлено в корзину"
-msgstr "in a basket"
+msgstr ""
 
 #: templates/core/cart.html:13
-#, fuzzy
-#| msgid "В корзину"
 msgid "Корзина пуста."
-msgstr "in a basket"
+msgstr ""
 
 #: templates/core/cart.html:16
 msgid "К меню"
-msgstr "To the menu"
+msgstr ""
 
 #: templates/core/cart.html:30 templates/core/home.html:79
 msgid "Фото"
-msgstr "Photo"
+msgstr ""
 
 #: templates/core/cart.html:38
 msgid "Цена за шт."
-msgstr "Price per unit."
+msgstr ""
 
 #: templates/core/cart.html:38 templates/core/cart.html:64
 #: templates/core/cart.html:76 templates/core/cart.html:108
@@ -245,53 +205,51 @@ msgstr ""
 
 #: templates/core/cart.html:48
 msgid "Количество"
-msgstr "Quantity"
+msgstr ""
 
 #: templates/core/cart.html:50
 msgid "Обновить"
-msgstr "Update"
+msgstr ""
 
 #: templates/core/cart.html:56
 msgid "Удалить"
-msgstr "Remove"
+msgstr ""
 
 #: templates/core/cart.html:64
 msgid "Итого по позиции"
-msgstr "Total by position"
+msgstr ""
 
 #: templates/core/cart.html:75
 msgid "К оплате"
-msgstr "To be paid"
+msgstr ""
 
 #: templates/core/cart.html:81
 msgid "Имя (необязательно)"
-msgstr "Name (optional)"
+msgstr ""
 
 #: templates/core/cart.html:83
 msgid "Адрес (необязательно)"
-msgstr "Address (optional)"
+msgstr ""
 
 #: templates/core/cart.html:85
 msgid "Комментарий (острота, без лука...)"
-msgstr "Comment (spicy, no onions...)"
+msgstr ""
 
 #: templates/core/cart.html:90
 msgid "Оформить в WhatsApp"
-msgstr "Apply on WhatsApp"
+msgstr ""
 
 #: templates/core/cart.html:95
-#, fuzzy
-#| msgid "Соберите блюда в корзину — оплата и подтверждение в WhatsApp."
 msgid "* Заказ не списывает деньги — вы подтверждаете его в чате WhatsApp."
-msgstr "Add the dishes to your cart and pay and confirm via WhatsApp."
+msgstr ""
 
 #: templates/core/cart.html:108
 msgid "Итого"
-msgstr "Total"
+msgstr ""
 
 #: templates/core/cart.html:111
 msgid "В WhatsApp"
-msgstr "On WhatsApp"
+msgstr ""
 
 #: templates/core/home.html:21
 msgid "restaurant"
@@ -303,32 +261,30 @@ msgid ""
 "        Добавляйте блюда в корзину и оформляйте заказ в WhatsApp одним "
 "касанием."
 msgstr ""
-"Authentic Italian cuisine: wood-fired pizza, pasta, salads, and desserts.\n"
-"Add dishes to your cart and place your order in WhatsApp with onetouch."
 
 #: templates/core/home.html:42
 msgid "Все"
-msgstr "All"
+msgstr ""
 
 #: templates/core/home.html:105
 msgid "Кол-во"
-msgstr "Quantity"
+msgstr ""
 
 #: templates/core/home.html:109
 msgid "В корзину"
-msgstr "in a basket"
+msgstr ""
 
 #: templates/core/home.html:125
 msgid "Готовы оформить заказ?"
-msgstr "Are you ready to place an order?"
+msgstr ""
 
 #: templates/core/home.html:126
 msgid "Соберите блюда в корзину — оплата и подтверждение в WhatsApp."
-msgstr "Add the dishes to your cart and pay and confirm via WhatsApp."
+msgstr ""
 
 #: templates/core/home.html:128
 msgid "Открыть корзину"
-msgstr "Open the shopping cart"
+msgstr ""
 
 #: venv/lib/python3.13/site-packages/django/contrib/messages/apps.py:16
 msgid "Messages"

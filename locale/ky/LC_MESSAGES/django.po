@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-04 22:11+0600\n"
+"POT-Creation-Date: 2025-11-04 23:18+0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -95,20 +95,20 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"Алгач Брешиядан (Түндүк Италия). Чыныгы италиялык пицца үчүн"
-"биз Италиядан келген ингредиенттерди колдонобуз.\n"
-"Даамын сактоо үчүн тез бышыруу: макарон, рисотто, пицца, "
-"лазанья, равиоли, гелато жана башкалар.\n"
+"Алгач Брешиядан (Түндүк Италия). Чыныгы италиялык пицца үчүнбиз Италиядан "
+"келген ингредиенттерди колдонобуз.\n"
+"Даамын сактоо үчүн тез бышыруу: макарон, рисотто, пицца, лазанья, равиоли, "
+"гелато жана башкалар.\n"
 "Негизги сыр — ар бир тамакка жаныңды салуу.\n"
 " "
 
 #: templates/core/about.html:81
 msgid "Бронирование столов"
-msgstr ""
+msgstr "Үстөл ээлөө"
 
 #: templates/core/about.html:86
 msgid "Показать на карте"
-msgstr "Үстөл ээлөө"
+msgstr "Картада көрсөтүү"
 
 #: templates/core/about.html:98
 msgid ""
@@ -126,24 +126,97 @@ msgstr ""
 "салттарын урматтоо менен. Ыңгайлуу зоналар жана VIP-бөлмөлөр бар.\n"
 " "
 
-#: templates/core/about.html:105 templates/core/home.html:33
+#: templates/core/about.html:105 templates/core/base.html:57
+#: templates/core/base.html:105 templates/core/home.html:33
 msgid "Меню"
 msgstr "Меню"
 
-#: templates/core/about.html:106
+#: templates/core/about.html:106 templates/core/base.html:59
+#: templates/core/base.html:107
 msgid "Контакты"
 msgstr "Байланыш"
 
-#: templates/core/about.html:109
+#: templates/core/about.html:109 templates/core/base.html:137
 #, fuzzy
 #| msgid "Готовы оформить заказ?"
 msgid "Оформить заказ в WhatsApp"
 msgstr "Текшерүүгө даярсызбы?"
 
-#: templates/core/cart.html:9
+#: templates/core/base.html:10
+msgid "Dolce Vita Family — italian restaurant"
+msgstr ""
+
+#: templates/core/base.html:11
+#, fuzzy
+#| msgid ""
+#| "Аутентичная итальянская кухня: дровяная пицца, паста, салаты и десерты.\n"
+#| "        Добавляйте блюда в корзину и оформляйте заказ в WhatsApp одним "
+#| "касанием."
+msgid ""
+"Аутентичная итальянская кухня: пицца из печи, паста, салаты. Быстрый заказ в "
+"WhatsApp."
+msgstr ""
+"Чыныгы италиялык ашкана: жыгачтан жасалган пицца, макарон, салаттар жана "
+"десерттер.\n"
+"Корзинага идиштерди кошуп, заказ кылыңыз. бир-бирден тийип."
+
+#: templates/core/base.html:49
+msgid "На главную"
+msgstr "Башкы бетке"
+
+#: templates/core/base.html:56
+msgid "Основное меню"
+msgstr "Негизги меню"
+
+#: templates/core/base.html:58 templates/core/base.html:106
+msgid "О нас"
+msgstr "Биз жөнүндө"
+
+#: templates/core/base.html:67
+#, fuzzy
+#| msgid "Открыть корзину"
+msgid "Открыть меню"
+msgstr "Таштанды ачуу"
+
+#: templates/core/base.html:74
+msgid "Выбор языка"
+msgstr "Тил тандоо"
+
+#: templates/core/base.html:87
+#, fuzzy
+#| msgid "Открыть корзину"
+msgid "Перейти в корзину"
+msgstr "Таштанды ачуу"
+
+#: templates/core/base.html:96 templates/core/cart.html:9
 #, fuzzy
 #| msgid "В корзину"
 msgid "Корзина"
+msgstr "Себет"
+
+#: templates/core/base.html:103
+msgid "Мобильное меню"
+msgstr "Мобилдик меню"
+
+#: templates/core/base.html:119
+msgid ""
+"Печь на дровах, свежая паста, салаты и десерты. Сбор заказа — в WhatsApp."
+msgstr "Жыгачтан бышыруу, жаңы макарон, салаттар жана десерттер. Заказ чогултуу-жылы."
+
+#: templates/core/base.html:142
+#, fuzzy
+#| msgid "Оформить в WhatsApp"
+msgid "Заказать в WhatsApp"
+msgstr "Кирүү"
+
+#: templates/core/base.html:152
+msgid "Пицца из печи · Паста · Десерты"
+msgstr ""
+
+#: templates/core/base.html:158
+#, fuzzy
+#| msgid "В корзину"
+msgid "Добавлено в корзину"
 msgstr "Себет"
 
 #: templates/core/cart.html:13
@@ -207,10 +280,8 @@ msgid "Оформить в WhatsApp"
 msgstr "Кирүү"
 
 #: templates/core/cart.html:95
-#| msgid "Соберите блюда в корзину — оплата и подтверждение в WhatsApp."
 msgid "* Заказ не списывает деньги — вы подтверждаете его в чате WhatsApp."
-msgstr "* Азыр акча алынбайт — заказды WhatsApp чатында ырастаасыз."
-
+msgstr "Буйрутма үчүн акча чегерилбейт — аны WhatsApp чатында тастыктайсыз."
 
 #: templates/core/cart.html:108
 msgid "Итого"
@@ -218,7 +289,7 @@ msgstr "Бардыгы"
 
 #: templates/core/cart.html:111
 msgid "В WhatsApp"
-msgstr ""
+msgstr "В WhatsApp"
 
 #: templates/core/home.html:21
 msgid "restaurant"
