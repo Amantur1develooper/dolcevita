@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-04 23:18+0600\n"
+"POT-Creation-Date: 2025-11-05 11:19+0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,45 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#: core/forms.py:6 templates/core/reserve.html:28
+msgid "Имя"
+msgstr "аты"
+
+#: core/forms.py:8
+msgid "Ваше имя"
+msgstr "сенин атың"
+
+#: core/forms.py:11 templates/core/about.html:52 templates/core/about.html:57
+#: templates/core/reserve.html:33
+msgid "Телефон"
+msgstr "Байланыш"
+
+#: core/forms.py:13
+#, fuzzy
+#| msgid "Телефон"
+msgid "Ваш телефон"
+msgstr "Байланыш"
+
+#: core/forms.py:16 templates/core/reserve.html:38
+msgid "Дата"
+msgstr "Дата"
+
+#: core/forms.py:20 templates/core/reserve.html:43
+msgid "Время"
+msgstr "Убакыт"
+
+#: core/forms.py:24 templates/core/reserve.html:48
+msgid "Гостей"
+msgstr "Коноктор"
+
+#: core/forms.py:29 templates/core/reserve.html:55
+msgid "Комментарий"
+msgstr "Комментарий"
+
+#: core/forms.py:33
+msgid "Пожелания: у окна, без лука, день рождения..."
+msgstr "Каалоо тилектер: терезенин жанында, пияз жок, туулган күн..."
+
 #: core/models.py:6 core/models.py:23
 msgid "Название"
 msgstr "Аталышы"
@@ -25,6 +64,18 @@ msgstr "Аталышы"
 #: core/models.py:28 templates/core/home.html:96
 msgid "Цена"
 msgstr "Баасы"
+
+#: core/views.py:162
+#, python-brace-format
+msgid ""
+"Здравствуйте! Хочу забронировать стол.\n"
+"Имя: {name}\n"
+"Телефон: {phone}\n"
+"Дата: {date}\n"
+"Время: {time}\n"
+"Гостей: {guests}\n"
+"Комментарий: {comment}"
+msgstr ""
 
 #: templates/core/about.html:4
 msgid "О нас — Dolce Vita Family"
@@ -76,10 +127,6 @@ msgstr "Саат"
 msgid "10:00–00:00"
 msgstr ""
 
-#: templates/core/about.html:52 templates/core/about.html:57
-msgid "Телефон"
-msgstr "Байланыш"
-
 #: templates/core/about.html:70
 msgid "Наш шеф — Massimo Girardi"
 msgstr "Биздин шеф - Massimo Girardi"
@@ -127,16 +174,16 @@ msgstr ""
 " "
 
 #: templates/core/about.html:105 templates/core/base.html:57
-#: templates/core/base.html:105 templates/core/home.html:33
+#: templates/core/base.html:107 templates/core/home.html:33
 msgid "Меню"
 msgstr "Меню"
 
 #: templates/core/about.html:106 templates/core/base.html:59
-#: templates/core/base.html:107
+#: templates/core/base.html:109
 msgid "Контакты"
 msgstr "Байланыш"
 
-#: templates/core/about.html:109 templates/core/base.html:137
+#: templates/core/about.html:109 templates/core/base.html:144
 #, fuzzy
 #| msgid "Готовы оформить заказ?"
 msgid "Оформить заказ в WhatsApp"
@@ -168,52 +215,59 @@ msgstr "Башкы бетке"
 msgid "Основное меню"
 msgstr "Негизги меню"
 
-#: templates/core/base.html:58 templates/core/base.html:106
+#: templates/core/base.html:58 templates/core/base.html:108
 msgid "О нас"
 msgstr "Биз жөнүндө"
 
-#: templates/core/base.html:67
+#: templates/core/base.html:60 templates/core/base.html:110
+#, fuzzy
+#| msgid "Бронирование столов"
+msgid "Бронирование"
+msgstr "Үстөл ээлөө"
+
+#: templates/core/base.html:69
+msgid "Выбор языка"
+msgstr "Тил тандоо"
+
+#: templates/core/base.html:81
 #, fuzzy
 #| msgid "Открыть корзину"
 msgid "Открыть меню"
 msgstr "Таштанды ачуу"
 
-#: templates/core/base.html:74
-msgid "Выбор языка"
-msgstr "Тил тандоо"
-
-#: templates/core/base.html:87
+#: templates/core/base.html:89
 #, fuzzy
 #| msgid "Открыть корзину"
 msgid "Перейти в корзину"
 msgstr "Таштанды ачуу"
 
-#: templates/core/base.html:96 templates/core/cart.html:9
+#: templates/core/base.html:98 templates/core/cart.html:9
 #, fuzzy
 #| msgid "В корзину"
 msgid "Корзина"
 msgstr "Себет"
 
-#: templates/core/base.html:103
+#: templates/core/base.html:105
 msgid "Мобильное меню"
 msgstr "Мобилдик меню"
 
-#: templates/core/base.html:119
+#: templates/core/base.html:126
 msgid ""
 "Печь на дровах, свежая паста, салаты и десерты. Сбор заказа — в WhatsApp."
-msgstr "Жыгачтан бышыруу, жаңы макарон, салаттар жана десерттер. Заказ чогултуу-жылы."
+msgstr ""
+"Жыгачтан бышыруу, жаңы макарон, салаттар жана десерттер. Заказ чогултуу-жылы."
 
-#: templates/core/base.html:142
+#: templates/core/base.html:149
 #, fuzzy
 #| msgid "Оформить в WhatsApp"
 msgid "Заказать в WhatsApp"
 msgstr "Кирүү"
 
-#: templates/core/base.html:152
+#: templates/core/base.html:159
 msgid "Пицца из печи · Паста · Десерты"
-msgstr ""
+msgstr "Духовкада бышырылган пицца · Макарон · Десерттер"
 
-#: templates/core/base.html:158
+#: templates/core/base.html:165
 #, fuzzy
 #| msgid "В корзину"
 msgid "Добавлено в корзину"
@@ -328,6 +382,46 @@ msgstr "Тамакты себетке чогултуңуз-төлөм жана �
 #: templates/core/home.html:128
 msgid "Открыть корзину"
 msgstr "Таштанды ачуу"
+
+#: templates/core/reserve.html:3
+#, fuzzy
+#| msgid "Бронирование столов"
+msgid "Бронирование стола — Dolce Vita Family"
+msgstr "Үстөл ээлөө"
+
+#: templates/core/reserve.html:4
+msgid ""
+"Забронируйте стол: укажите дату, время, количество гостей и отправьте заявку "
+"в WhatsApp."
+msgstr ""
+"Үстөлдү ээлеп коюу: коноктордун датасын, убактысын жана санын "
+"көрсөтүп,WhatsApp аркылуу суроо-талап жөнөтүңүз."
+
+#: templates/core/reserve.html:9
+#, fuzzy
+#| msgid "Бронирование столов"
+msgid "Бронирование стола"
+msgstr "Үстөл ээлөө"
+
+#: templates/core/reserve.html:10
+msgid "Заполните форму — заявка откроется в WhatsApp для подтверждения."
+msgstr "Форманы толтуруңуз - сиздин арызыңыз ырастоо үчүн WhatsAppта ачылат."
+
+#: templates/core/reserve.html:20
+msgid ""
+"В настройках не указан номер WhatsApp. Добавьте WHATSAPP_NUMBER в "
+"settings.py."
+msgstr ""
+
+#: templates/core/reserve.html:68
+#, fuzzy
+#| msgid "Оформить в WhatsApp"
+msgid "Отправить в WhatsApp"
+msgstr "Кирүү"
+
+#: templates/core/reserve.html:72
+msgid "Отмена"
+msgstr "Жокко чыгаруу"
 
 #: venv/lib/python3.13/site-packages/django/contrib/messages/apps.py:16
 msgid "Messages"

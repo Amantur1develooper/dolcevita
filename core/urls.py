@@ -14,4 +14,5 @@ urlpatterns = [
     path("cart/", views.cart_detail, name="cart_detail"),
     path("contacts/", views.contacts, name="contacts"),  # ← новинка
      path("about/", views.about, name="about"), 
+     path("reserve/", views.reserve, name="reserve"),
 ]
