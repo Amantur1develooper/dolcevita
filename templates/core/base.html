@@ -56,9 +56,9 @@
     <nav class="hidden md:flex items-center gap-5 text-sm text-stone-700" aria-label="{% trans 'Основное меню' %}">
       <a href="{% url 'core:menu1' %}" class="hover:text-black">{% trans "Меню" %}</a>
       <a href="{% url 'core:home' %}" class="hover:text-black">{% trans "Доставка" %}</a>
-      <a href="{% url 'core:about' %}" class="hover:text-black">{% trans "О нас" %}</a>
       <a href="{% url 'core:contacts' %}" class="hover:text-black">{% trans "Контакты" %}</a>
       <a href="{% url 'core:reserve' %}" class="hover:text-black">{% trans "Бронирование" %}</a>
+      <a href="{% url 'core:about' %}" class="hover:text-black">{% trans "О нас" %}</a>
 
     </nav>
 
@@ -105,10 +105,11 @@
   <!-- Mobile menu -->
   <div id="mobile-menu" class="md:hidden hidden border-t border-black/5 bg-white/95 backdrop-blur" role="region" aria-label="{% trans 'Мобильное меню' %}">
     <div class="max-w-6xl mx-auto px-4 py-3 grid grid-cols-1 gap-2 text-stone-800">
-      <a class="px-3 py-2 rounded-lg hover:bg-stone-100" href="{% url 'core:home' %}">{% trans "Меню" %}</a>
-      <a class="px-3 py-2 rounded-lg hover:bg-stone-100" href="{% url 'core:about' %}">{% trans "О нас" %}</a>
+      <a class="px-3 py-2 rounded-lg hover:bg-stone-100" href="{% url 'core:home' %}">{% trans "Доставка" %}</a>
+      <a href="{% url 'core:menu1' %}" class="px-3 py-2 rounded-lg hover:bg-stone-100">{% trans "Меню" %}</a>
       <a class="px-3 py-2 rounded-lg hover:bg-stone-100" href="{% url 'core:contacts' %}">{% trans "Контакты" %}</a>
       <a class="px-3 py-2 rounded-lg hover:bg-stone-100" href="{% url 'core:reserve' %}">{% trans "Бронирование" %}</a>
+      <a class="px-3 py-2 rounded-lg hover:bg-stone-100" href="{% url 'core:about' %}">{% trans "О нас" %}</a>
       
       {% comment %} <a href="" class="hover:text-black"></a> {% endcomment %}
 
