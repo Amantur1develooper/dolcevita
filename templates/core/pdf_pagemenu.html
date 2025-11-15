@@ -1,0 +1,15 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block content %}
+  <p><a href="{% static 'docs/DOLCEMENU2025.pdf' %}" target="_blank" rel="noopener">Открыть PDF в новой вкладке</a></p>
+
+  <!-- Встроенное отображение на странице -->
+  <iframe
+      src="{% static 'docs/DOLCEMENU2025.pdf' %}"
+      width="100%"
+      height="800"
+      style="border:0"
+      title="Правила (PDF)">
+  </iframe>
+
+{% endblock content %}

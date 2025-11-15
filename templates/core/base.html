@@ -54,10 +54,11 @@
 
     <!-- Desktop nav -->
     <nav class="hidden md:flex items-center gap-5 text-sm text-stone-700" aria-label="{% trans 'Основное меню' %}">
-      <a href="{% url 'core:home' %}" class="hover:text-black">{% trans "Меню" %}</a>
+      <a href="{% url 'core:menu1' %}" class="hover:text-black">{% trans "Меню" %}</a>
+      <a href="{% url 'core:home' %}" class="hover:text-black">{% trans "Доставка" %}</a>
       <a href="{% url 'core:about' %}" class="hover:text-black">{% trans "О нас" %}</a>
       <a href="{% url 'core:contacts' %}" class="hover:text-black">{% trans "Контакты" %}</a>
-       <a href="{% url 'core:reserve' %}" class="hover:text-black">{% trans "Бронирование" %}</a>
+      <a href="{% url 'core:reserve' %}" class="hover:text-black">{% trans "Бронирование" %}</a>
 
     </nav>
 
