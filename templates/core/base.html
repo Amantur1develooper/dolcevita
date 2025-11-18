@@ -47,8 +47,9 @@
 <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-black/5">
   <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
     <a href="{% url 'core:home' %}" class="flex items-center gap-3" aria-label="{% trans 'На главную' %}">
-      <div class="brand text-2xl sm:text-3xl font-semibold italic">
-        Dolce <span class="font-bold not-italic">Vita</span> Family
+      <div class="brand text-2xl sm:text-3xl font-semibold italic" >
+        <img style="height: 100px;" src="{% static 'logo2.jpg' %}" alt="">
+       
       </div>
     </a>
 
@@ -118,19 +119,7 @@
 </header>
 
 <!-- HERO (overrideable) -->
-{% block hero %}
-<section class="max-w-6xl mx-auto px-4 pt-6">
-  <div class="rounded-3xl bg-white/80 backdrop-blur shadow-xl ring-1 ring-black/5 p-5 md:p-8 flex items-center gap-5">
-    <div>
-      <div class="brand text-3xl md:text-5xl font-semibold leading-tight">Sapori d’Italia</div>
-      <div class="text-stone-600 mt-1">
-        {% trans "Печь на дровах, свежая паста, салаты и десерты. Сбор заказа — в WhatsApp." %}
-      </div>
-      <div class="flag-x h-1 w-28 mt-3 rounded-full"></div>
-    </div>
-  </div>
-</section>
-{% endblock %}
+
 
 <!-- MAIN -->
 <main class="max-w-6xl mx-auto px-4 py-6 pb-24 md:pb-6">
