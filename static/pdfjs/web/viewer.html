@@ -1,0 +1,33 @@
+<script>
+  // Применяем опции в момент, когда веб-вьювер загрузился, но еще не инициализировался
+  document.addEventListener('webviewerloaded', () => {
+    const Opt = window.PDFViewerApplicationOptions;
+    if (!Opt) return;
+    Opt.set('disableDownload', true);
+    Opt.set('disablePrint', true);
+    Opt.set('sidebarViewOnLoad', 0); // 0 = без сайдбара
+  });
+</script>
+
+<style>
+  /* Прячем кнопки UI в тулбаре (визуально) */
+  #download, #secondaryDownload,
+  #print, #secondaryPrint,
+  #openFile, #secondaryOpenFile,
+  #presentationMode, #viewBookmark,
+  .toolbarButton.openFile, .toolbarButton.print, .toolbarButton.download {
+    display: none !important;
+  }
+</style>
+
+<script>
+  // Чуть усложним "нельзя скачать/печать": режем контекстное меню и хоткеи
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  window.addEventListener('keydown', e => {
+    const key = e.key?.toLowerCase();
+    if ((e.ctrlKey || e.metaKey) && (key === 's' || key === 'p')) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }, true);
+</script>

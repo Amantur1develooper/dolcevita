@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-05 11:19+0600\n"
+"POT-Creation-Date: 2025-11-28 08:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,7 +61,7 @@ msgstr ""
 msgid "Название"
 msgstr ""
 
-#: core/models.py:28 templates/core/home.html:96
+#: core/models.py:28 templates/core/home.html:103
 msgid "Цена"
 msgstr ""
 
@@ -153,17 +153,17 @@ msgid ""
 "      "
 msgstr ""
 
-#: templates/core/about.html:105 templates/core/base.html:57
-#: templates/core/base.html:107 templates/core/home.html:33
+#: templates/core/about.html:105 templates/core/base.html:58
+#: templates/core/base.html:110 templates/core/home.html:40
 msgid "Меню"
 msgstr ""
 
-#: templates/core/about.html:106 templates/core/base.html:59
-#: templates/core/base.html:109
+#: templates/core/about.html:106 templates/core/base.html:60
+#: templates/core/base.html:111
 msgid "Контакты"
 msgstr ""
 
-#: templates/core/about.html:109 templates/core/base.html:144
+#: templates/core/about.html:109 templates/core/base.html:135
 msgid "Оформить заказ в WhatsApp"
 msgstr ""
 
@@ -181,52 +181,51 @@ msgstr ""
 msgid "На главную"
 msgstr ""
 
-#: templates/core/base.html:56
+#: templates/core/base.html:57
 msgid "Основное меню"
 msgstr ""
 
-#: templates/core/base.html:58 templates/core/base.html:108
-msgid "О нас"
+#: templates/core/base.html:59 templates/core/base.html:109
+msgid "Доставка"
 msgstr ""
 
-#: templates/core/base.html:60 templates/core/base.html:110
+#: templates/core/base.html:61 templates/core/base.html:112
 msgid "Бронирование"
 msgstr ""
 
-#: templates/core/base.html:69
+#: templates/core/base.html:62 templates/core/base.html:113
+msgid "О нас"
+msgstr ""
+
+#: templates/core/base.html:71
 msgid "Выбор языка"
 msgstr ""
 
-#: templates/core/base.html:81
+#: templates/core/base.html:83
 msgid "Открыть меню"
 msgstr ""
 
-#: templates/core/base.html:89
+#: templates/core/base.html:91
 msgid "Перейти в корзину"
 msgstr ""
 
-#: templates/core/base.html:98 templates/core/cart.html:9
+#: templates/core/base.html:100 templates/core/cart.html:9
 msgid "Корзина"
 msgstr ""
 
-#: templates/core/base.html:105
+#: templates/core/base.html:107
 msgid "Мобильное меню"
 msgstr ""
 
-#: templates/core/base.html:126
-msgid ""
-"Печь на дровах, свежая паста, салаты и десерты. Сбор заказа — в WhatsApp."
-msgstr ""
-
-#: templates/core/base.html:149
+#: templates/core/base.html:140
 msgid "Заказать в WhatsApp"
 msgstr ""
 
-#: templates/core/base.html:159
+#: templates/core/base.html:150
 msgid "Пицца из печи · Паста · Десерты"
 msgstr ""
 
-#: templates/core/base.html:165
+#: templates/core/base.html:156
 msgid "Добавлено в корзину"
 msgstr ""
 
@@ -238,7 +237,7 @@ msgstr ""
 msgid "К меню"
 msgstr ""
 
-#: templates/core/cart.html:30 templates/core/home.html:79
+#: templates/core/cart.html:30 templates/core/home.html:86
 msgid "Фото"
 msgstr ""
 
@@ -248,7 +247,7 @@ msgstr ""
 
 #: templates/core/cart.html:38 templates/core/cart.html:64
 #: templates/core/cart.html:76 templates/core/cart.html:108
-#: templates/core/home.html:97
+#: templates/core/home.html:104
 msgid "сом"
 msgstr ""
 
@@ -306,32 +305,40 @@ msgstr ""
 
 #: templates/core/home.html:26
 msgid ""
-"Аутентичная итальянская кухня: дровяная пицца, паста, салаты и десерты.\n"
-"        Добавляйте блюда в корзину и оформляйте заказ в WhatsApp одним "
-"касанием."
+"Добро пожаловать в ресторанный комплекс «Dolce Vita Family»!\n"
+"Здесь итальянские традиции встречаются с мировыми кулинарными "
+"вдохновениями.\n"
+"Каждое блюдо\n"
+"- это\n"
+"гармония свежести, качества\n"
+"и творчества, приготовленное с любовью для незабываемых впечатлений.\n"
+"Окунитесь в уютную атмосферу, наслаждайтесь разнообразием вкусов и "
+"почувствуйте наше искреннее гостеприимство.\n"
+"«Dolce Vita Family» - место, где каждый гость ощущает себя особенным. "
+"Приятного аппетита и чудесного настроения!\n"
 msgstr ""
 
-#: templates/core/home.html:42
+#: templates/core/home.html:49
 msgid "Все"
 msgstr ""
 
-#: templates/core/home.html:105
+#: templates/core/home.html:112
 msgid "Кол-во"
 msgstr ""
 
-#: templates/core/home.html:109
+#: templates/core/home.html:116
 msgid "В корзину"
 msgstr ""
 
-#: templates/core/home.html:125
+#: templates/core/home.html:132
 msgid "Готовы оформить заказ?"
 msgstr ""
 
-#: templates/core/home.html:126
+#: templates/core/home.html:133
 msgid "Соберите блюда в корзину — оплата и подтверждение в WhatsApp."
 msgstr ""
 
-#: templates/core/home.html:128
+#: templates/core/home.html:135
 msgid "Открыть корзину"
 msgstr ""
 
