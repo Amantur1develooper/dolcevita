@@ -151,13 +151,23 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.utils.translation import gettext as _
 from .forms import ReservationForm
+# core/views.py
+from django.conf import settings
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
+from django.utils.translation import gettext as _
+from urllib.parse import quote_plus
+from .forms import ReservationForm
 
 def reserve(request):
     if request.method == "POST":
         form = ReservationForm(request.POST)
         if form.is_valid():
             d = form.cleaned_data
-            # тексты можно отдать на i18n, сейчас — кратко и понятно
+
+            # Получим человекочитаемую метку этажа из choices
+            floor_label = dict(form.fields["floor"].choices).get(d["floor"], d["floor"])
+
             text = _(
                 "Здравствуйте! Хочу забронировать стол.\n"
                 "Имя: {name}\n"
@@ -165,6 +175,7 @@ def reserve(request):
                 "Дата: {date}\n"
                 "Время: {time}\n"
                 "Гостей: {guests}\n"
+                "Этаж: {floor}\n"
                 "Комментарий: {comment}"
             ).format(
                 name=d["name"],
@@ -172,12 +183,13 @@ def reserve(request):
                 date=d["date"].strftime("%Y-%m-%d"),
                 time=d["time"].strftime("%H:%M"),
                 guests=d["guests"],
+                floor=floor_label,
                 comment=d.get("comment") or "-"
             )
 
             number = getattr(settings, "WHATSAPP_PHONE", "")
             if not number:
-                # если номер забыли поставить — просто показываем страницу с подсказкой
+                
                 return render(request, "core/reserve.html", {
                     "form": form,
                     "no_whatsapp": True
@@ -189,3 +201,41 @@ def reserve(request):
         form = ReservationForm()
 
     return render(request, "core/reserve.html", {"form": form})
+
+# def reserve(request):
+#     if request.method == "POST":
+#         form = ReservationForm(request.POST)
+#         if form.is_valid():
+#             d = form.cleaned_data
+#             # тексты можно отдать на i18n, сейчас — кратко и понятно
+#             text = _(
+#                 "Здравствуйте! Хочу забронировать стол.\n"
+#                 "Имя: {name}\n"
+#                 "Телефон: {phone}\n"
+#                 "Дата: {date}\n"
+#                 "Время: {time}\n"
+#                 "Гостей: {guests}\n"
+#                 "Комментарий: {comment}"
+#             ).format(
+#                 name=d["name"],
+#                 phone=d["phone"],
+#                 date=d["date"].strftime("%Y-%m-%d"),
+#                 time=d["time"].strftime("%H:%M"),
+#                 guests=d["guests"],
+#                 comment=d.get("comment") or "-"
+#             )
+
+#             number = getattr(settings, "WHATSAPP_PHONE", "")
+#             if not number:
+#                 # если номер забыли поставить — просто показываем страницу с подсказкой
+#                 return render(request, "core/reserve.html", {
+#                     "form": form,
+#                     "no_whatsapp": True
+#                 })
+
+#             url = f"https://wa.me/{number}?text={quote_plus(text)}"
+#             return HttpResponseRedirect(url)
+#     else:
+#         form = ReservationForm()
+
+#     return render(request, "core/reserve.html", {"form": form})

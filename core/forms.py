@@ -1,6 +1,26 @@
 from django import forms
 from django.utils.translation import gettext_lazy as _
 
+
+# core/forms.py
+from django import forms
+from django.utils.translation import gettext_lazy as _
+
+FLOOR_CHOICES = [
+    ("1", _("1 этаж Долче Вита Караоки")),
+    ("2", _("2 этаж")),
+    ("3", _("3 этаж Мане")),  # при желании можно подписать как "3 этаж (Mone)"
+]
+# core/forms.py
+from django import forms
+from django.utils.translation import gettext_lazy as _
+
+INPUT_CLS = (
+    "w-full border border-stone-300 rounded-xl px-3 py-2 "
+    "focus:outline-none focus:ring-2 focus:ring-emerald-500/40 "
+    "focus:border-emerald-500 placeholder-stone-400"
+)
+
 class ReservationForm(forms.Form):
     name = forms.CharField(
         label=_("Имя"),
@@ -32,5 +52,12 @@ class ReservationForm(forms.Form):
             "rows":3,
             "placeholder": _("Пожелания: у окна, без лука, день рождения..."),
             "class":"w-full border rounded-xl px-3 py-2"
+        })
+    )
+    floor = forms.ChoiceField(  # ← стилизованный select
+        label=_("Этаж"),
+        choices=FLOOR_CHOICES,
+        widget=forms.Select(attrs={
+            "class": INPUT_CLS,
         })
     )
