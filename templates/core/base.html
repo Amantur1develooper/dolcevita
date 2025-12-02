@@ -27,10 +27,7 @@
     :root{ --green:#009246; --white:#ffffff; --red:#ce2b37; --ink:#1f1f1f; --paper:#f5f3ef; }
     html,body{ height:100%; color:var(--ink); }
     body{
-      background:
-        radial-gradient(circle at 12% 18%, rgba(0,0,0,.025) 0 40%, transparent 41%) 0 0/26px 26px,
-        radial-gradient(circle at 70% 70%, rgba(0,0,0,.02) 0 40%, transparent 41%) 10px 10px/22px 22px,
-        var(--paper);
+      background: url("{% static 'fon1.jpeg' %}") center/cover no-repeat fixed;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
     .brand{ font-family:"Cormorant Garamond", serif; letter-spacing:.02em; }
