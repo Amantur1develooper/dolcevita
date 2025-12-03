@@ -25,11 +25,43 @@
 
   <style>
     :root{ --green:#009246; --white:#ffffff; --red:#ce2b37; --ink:#1f1f1f; --paper:#f5f3ef; }
-    html,body{ height:100%; color:var(--ink); }
+  html,body{ height:100%; color:var(--ink); }
+
+  /* Базовый фон + лёгкая «вуаль» для читабельности текста */
+  body{
+    background:none;
+      
+      {% comment %} url("{% static 'fon2.jpeg' %}") center / cover no-repeat fixed; {% endcomment %}
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  }
+.page-bg{
+  position: fixed;
+  inset: 0;               /* top:0; right:0; bottom:0; left:0 */
+  z-index: -1;            /* под всем контентом */
+  background: url("{% static 'fon2.jpeg' %}") center / cover no-repeat;
+  pointer-events: none;   /* чтобы не перехватывал клики */
+  will-change: transform; /* сглаживает подёргивания */
+  transform: translateZ(0);
+}
+
+/* На мобилках оставляем тот же фиксированный слой —
+   он работает стабильнее, чем background-attachment: fixed у body */
+@media (max-width: 768px){
+  .page-bg{
+    background-position: center top; /* при желании фиксируем компоновку */
+  }
+}
+
+  /* На телефонах отключаем fixed — это главное */
+  @media (max-width: 768px){
     body{
-      background: url("{% static 'fon1.jpeg' %}") center/cover no-repeat fixed;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:none;
+        
+        {% comment %} url("{% static 'fon2.jpeg' %}") center top / cover no-repeat; /* без fixed */ {% endcomment %}
+      /* Иногда помогает явно указать размер: */
+      background-attachment: scroll;
     }
+  }
     .brand{ font-family:"Cormorant Garamond", serif; letter-spacing:.02em; }
     .flag-x{ background:linear-gradient(90deg, var(--green) 0 33%, var(--white) 33% 66%, var(--red) 66% 100%); }
     .flag-y{ background:linear-gradient(180deg, var(--green) 0 33%, var(--white) 33% 66%, var(--red) 66% 100%); }
@@ -39,6 +71,7 @@
   {% block head_extra %}{% endblock %}
 </head>
 <body>
+<div class="page-bg" aria-hidden="true"></div>
 
 <!-- HEADER -->
 <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-black/5">
