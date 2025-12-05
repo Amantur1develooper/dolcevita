@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-05 13:06+0000\n"
+"POT-Creation-Date: 2025-12-05 23:19+0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -147,8 +147,8 @@ msgid "10:00–00:00"
 msgstr ""
 
 #: templates/core/about.html:79
-msgid "Наш шеф — Massimo Girardi"
-msgstr "Биздин шеф - Massimo Girardi"
+msgid "Наш шеф - Нурсултан Кулуев"
+msgstr ""
 
 #: templates/core/about.html:81
 msgid ""
@@ -172,42 +172,6 @@ msgstr ""
 msgid "Бронирование столов"
 msgstr "Үстөл ээлөө"
 
-#: templates/core/about.html:95
-msgid "Показать на карте"
-msgstr "Картада көрсөтүү"
-
-#: templates/core/about.html:107
-msgid ""
-"\n"
-"      Рядом с «Dolce Vita» работает ресторан <b>Mone</b> на <b>3-м этаже</b> "
-"— место для встреч, романтических вечеров\n"
-"      и праздников. Оба ресторана — <b>Халяль</b>, с уважением к традициям "
-"гостей. Есть уютные зоны и VIP-кабинки.\n"
-"      "
-msgstr ""
-"\n"
-" «Dolce Vita» жанында <b>3-кабатта</b> <b>Mone</b> рестораны иштейт — "
-"жолугушууларга, романтикалык кечтерге\n"
-" жана майрамдарга ылайыктуу. Экөө тең <b>Халал</b> стандартында, коноктордун "
-"салттарын урматтоо менен. Ыңгайлуу зоналар жана VIP-бөлмөлөр бар.\n"
-" "
-
-#: templates/core/about.html:114 templates/core/base.html:92
-#: templates/core/base.html:144
-msgid "Меню"
-msgstr "Меню"
-
-#: templates/core/about.html:115 templates/core/base.html:94
-#: templates/core/base.html:145
-msgid "Контакты"
-msgstr "Байланыш"
-
-#: templates/core/about.html:118 templates/core/base.html:169
-#, fuzzy
-#| msgid "Готовы оформить заказ?"
-msgid "Оформить заказ в WhatsApp"
-msgstr "Текшерүүгө даярсызбы?"
-
 #: templates/core/base.html:11
 msgid "Dolce Vita Family — italian restaurant"
 msgstr ""
@@ -226,65 +190,80 @@ msgstr ""
 "десерттер.\n"
 "Корзинага идиштерди кошуп, заказ кылыңыз. бир-бирден тийип."
 
-#: templates/core/base.html:83
+#: templates/core/base.html:82
 msgid "На главную"
 msgstr "Башкы бетке"
 
-#: templates/core/base.html:91
+#: templates/core/base.html:90
 msgid "Основное меню"
 msgstr "Негизги меню"
 
-#: templates/core/base.html:93 templates/core/base.html:143
+#: templates/core/base.html:91 templates/core/base.html:143
+#: templates/core/menu.html:10 templates/core/menu.html:25
+msgid "Меню"
+msgstr "Меню"
+
+#: templates/core/base.html:92 templates/core/base.html:142
 msgid "Доставка"
 msgstr "Жеткирүү"
 
-#: templates/core/base.html:95 templates/core/base.html:146
+#: templates/core/base.html:93 templates/core/base.html:144
+msgid "Контакты"
+msgstr "Байланыш"
+
+#: templates/core/base.html:94 templates/core/base.html:145
 #, fuzzy
 #| msgid "Бронирование столов"
 msgid "Бронирование"
 msgstr "Үстөл ээлөө"
 
-#: templates/core/base.html:96 templates/core/base.html:147
+#: templates/core/base.html:95 templates/core/base.html:146
 msgid "О нас"
 msgstr "Биз жөнүндө"
 
-#: templates/core/base.html:105
+#: templates/core/base.html:104
 msgid "Выбор языка"
 msgstr "Тил тандоо"
 
-#: templates/core/base.html:117
+#: templates/core/base.html:116
 #, fuzzy
 #| msgid "Открыть корзину"
 msgid "Открыть меню"
 msgstr "Таштанды ачуу"
 
-#: templates/core/base.html:125
+#: templates/core/base.html:124
 #, fuzzy
 #| msgid "Открыть корзину"
 msgid "Перейти в корзину"
 msgstr "Таштанды ачуу"
 
-#: templates/core/base.html:134 templates/core/cart.html:9
+#: templates/core/base.html:133 templates/core/cart.html:9
 #, fuzzy
 #| msgid "В корзину"
 msgid "Корзина"
 msgstr "Себет"
 
-#: templates/core/base.html:141
+#: templates/core/base.html:140
 msgid "Мобильное меню"
 msgstr "Мобилдик меню"
 
-#: templates/core/base.html:174
+#: templates/core/base.html:168
+#, fuzzy
+#| msgid "Готовы оформить заказ?"
+msgid "Оформить заказ в WhatsApp"
+msgstr "Текшерүүгө даярсызбы?"
+
+#: templates/core/base.html:173
 #, fuzzy
 #| msgid "Оформить в WhatsApp"
 msgid "Заказать в WhatsApp"
 msgstr "Кирүү"
 
-#: templates/core/base.html:184
+#: templates/core/base.html:183
 msgid "Пицца из печи · Паста · Десерты"
 msgstr "Духовкада бышырылган пицца · Макарон · Десерттер"
 
-#: templates/core/base.html:190
+#: templates/core/base.html:189
 #, fuzzy
 #| msgid "В корзину"
 msgid "Добавлено в корзину"
@@ -362,6 +341,14 @@ msgstr "Бардыгы"
 msgid "В WhatsApp"
 msgstr "В WhatsApp"
 
+#: templates/core/contacts.html:11
+msgid "Свяжитесь с нами"
+msgstr "Биз менен байланыш"
+
+#: templates/core/contacts.html:12
+msgid "Бронирование столов, мероприятия, доставка — мы на связи каждый день."
+msgstr "Стол ээлөө, иш — чаралар, жеткирүү-Биз күн сайын байланыштабыз."
+
 #: templates/core/home.html:36
 msgid ""
 "Добро пожаловать в ресторанный комплекс «Dolce Vita Family»!\n"
@@ -411,6 +398,38 @@ msgstr "Тамакты себетке чогултуңуз-төлөм жана �
 #: templates/core/home.html:145
 msgid "Открыть корзину"
 msgstr "Таштанды ачуу"
+
+#: templates/core/menu.html:27 templates/core/menu.html:72
+#, fuzzy
+#| msgid "Открыть корзину"
+msgid "Открыть PDF"
+msgstr "Таштанды ачуу"
+
+#: templates/core/menu.html:36
+msgid "Не удалось встроить PDF. "
+msgstr ""
+
+#: templates/core/menu.html:37
+msgid "Открыть в новой вкладке"
+msgstr ""
+
+#: templates/core/menu.html:51
+#, fuzzy
+#| msgid "Основное меню"
+msgid "Страница меню"
+msgstr "Негизги меню"
+
+#: templates/core/menu.html:63
+msgid "Скачать PDF"
+msgstr ""
+
+#: templates/core/menu.html:65
+msgid "Изображения сжаты для быстрого просмотра"
+msgstr ""
+
+#: templates/core/menu.html:70
+msgid "Мобильная версия меню временно недоступна."
+msgstr ""
 
 #: templates/core/reserve.html:3
 #, fuzzy
@@ -1714,6 +1733,28 @@ msgstr ""
 #: venv/lib/python3.13/site-packages/modeltranslation/widgets.py:32
 msgid "None"
 msgstr ""
+
+#~ msgid "Наш шеф — Massimo Girardi"
+#~ msgstr "Биздин шеф - Massimo Girardi"
+
+#~ msgid "Показать на карте"
+#~ msgstr "Картада көрсөтүү"
+
+#~ msgid ""
+#~ "\n"
+#~ "      Рядом с «Dolce Vita» работает ресторан <b>Mone</b> на <b>3-м этаже</"
+#~ "b> — место для встреч, романтических вечеров\n"
+#~ "      и праздников. Оба ресторана — <b>Халяль</b>, с уважением к "
+#~ "традициям гостей. Есть уютные зоны и VIP-кабинки.\n"
+#~ "      "
+#~ msgstr ""
+#~ "\n"
+#~ " «Dolce Vita» жанында <b>3-кабатта</b> <b>Mone</b> рестораны иштейт — "
+#~ "жолугушууларга, романтикалык кечтерге\n"
+#~ " жана майрамдарга ылайыктуу. Экөө тең <b>Халал</b> стандартында, "
+#~ "коноктордун салттарын урматтоо менен. Ыңгайлуу зоналар жана VIP-бөлмөлөр "
+#~ "бар.\n"
+#~ " "
 
 #~ msgid "Ресторанный комплекс «Dolce Vita»"
 #~ msgstr "Тоо ресторанный комплекс «Dolce Vita»"

@@ -9,7 +9,7 @@ from django.utils.translation import gettext_lazy as _
 FLOOR_CHOICES = [
     ("1", _("1 этаж Dolce Bakery& karaoke")),
     ("2", _("2 этаж Dolce Family")),
-    ("3", _("3 этаж ресторан 'MOHE'")),  # при желании можно подписать как "3 этаж (Mone)"
+    ("3", _("3 этаж restaurant MONE")),  # при желании можно подписать как "3 этаж (Mone)"
 ]
 # core/forms.py
 from django import forms
