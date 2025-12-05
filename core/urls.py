@@ -15,6 +15,7 @@ urlpatterns = [
     path("contacts/", views.contacts, name="contacts"),  # ← новинка
      path("about/", views.about, name="about"), 
      path("reserve/", views.reserve, name="reserve"),
-     path("menu/", TemplateView.as_view(template_name="core/pdf_pagemenu.html"), name="menu1"),
+     path("menu/", views.menu_view, name="menu1"),
+    #  path("menu/", TemplateView.as_view(template_name="core/pdf_pagemenu.html"), name="menu1"),
 
 ]

@@ -202,40 +202,51 @@ def reserve(request):
 
     return render(request, "core/reserve.html", {"form": form})
 
-# def reserve(request):
-#     if request.method == "POST":
-#         form = ReservationForm(request.POST)
-#         if form.is_valid():
-#             d = form.cleaned_data
-#             # тексты можно отдать на i18n, сейчас — кратко и понятно
-#             text = _(
-#                 "Здравствуйте! Хочу забронировать стол.\n"
-#                 "Имя: {name}\n"
-#                 "Телефон: {phone}\n"
-#                 "Дата: {date}\n"
-#                 "Время: {time}\n"
-#                 "Гостей: {guests}\n"
-#                 "Комментарий: {comment}"
-#             ).format(
-#                 name=d["name"],
-#                 phone=d["phone"],
-#                 date=d["date"].strftime("%Y-%m-%d"),
-#                 time=d["time"].strftime("%H:%M"),
-#                 guests=d["guests"],
-#                 comment=d.get("comment") or "-"
-#             )
 
-#             number = getattr(settings, "WHATSAPP_PHONE", "")
-#             if not number:
-#                 # если номер забыли поставить — просто показываем страницу с подсказкой
-#                 return render(request, "core/reserve.html", {
-#                     "form": form,
-#                     "no_whatsapp": True
-#                 })
+import os
+import re
+from glob import glob
 
-#             url = f"https://wa.me/{number}?text={quote_plus(text)}"
-#             return HttpResponseRedirect(url)
-#     else:
-#         form = ReservationForm()
+from django.conf import settings
+from django.contrib.staticfiles.storage import staticfiles_storage
+from django.templatetags.static import static
+from django.shortcuts import render
 
-#     return render(request, "core/reserve.html", {"form": form})
+# Небольшой helper: ищем файлы либо в STATIC_ROOT (prod),
+# либо в первом STATICFILES_DIRS (dev)
+def _find_static_dir():
+    if getattr(settings, "STATIC_ROOT", None) and os.path.isdir(settings.STATIC_ROOT):
+        return settings.STATIC_ROOT
+    dirs = getattr(settings, "STATICFILES_DIRS", [])
+    return dirs[0] if dirs else None
+
+def _natural_key(path):
+    # .../page-12.webp -> 12 (для естественной сортировки)
+    m = re.search(r"page-(\d+)\.webp$", os.path.basename(path))
+    return int(m.group(1)) if m else 0
+
+def menu_view(request):
+    # URL для PDF (просто через {% static %})
+    pdf_url = static("menu/menu-web.pdf")
+
+    # Ищем webp-страницы на диске, строим к ним STATIC-URL’ы
+    webp_urls = []
+    base_dir = _find_static_dir()
+    if base_dir:
+        filesystem_glob = os.path.join(base_dir, "menu", "page-*.webp")
+        files = sorted(glob(filesystem_glob), key=_natural_key)
+        for f in files:
+            rel = os.path.relpath(f, base_dir).replace("\\", "/")  # menu/page-1.webp
+            try:
+                # корректно построить URL независимо от STATIC_URL
+                url = staticfiles_storage.url(rel)
+            except Exception:
+                # fallback (обычно не понадобится)
+                url = static(rel)
+            webp_urls.append(url)
+
+    ctx = {
+        "pdf_url": pdf_url,
+        "webp_pages": webp_urls,  # пустой список — тоже ок
+    }
+    return render(request, "core/menu.html", ctx)

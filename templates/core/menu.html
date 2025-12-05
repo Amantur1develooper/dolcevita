@@ -1,0 +1,80 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% load static i18n i18n_attrs %}
+
+{% block content %}
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>{% trans "Меню" %} — Dolce Vita</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Высота вьювера PDF на десктопе */
+    .pdf-frame { min-height: 85vh; }
+    /* Лёгкий скролл-эффект для галереи на мобилках */
+    .snap-x { scroll-snap-type: x mandatory; }
+    .snap-center { scroll-snap-align: center; }
+  </style>
+</head>
+<body class="bg-white text-stone-800">
+
+  <main class="max-w-6xl mx-auto px-3 sm:px-4 py-6">
+    <div class="flex items-center justify-between mb-4">
+      <h1 class="text-2xl font-semibold">{% trans "Меню" %}</h1>
+      <a href="{{ pdf_url }}" target="_blank" class="hidden md:inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-emerald-600 text-white">
+        {% trans "Открыть PDF" %}
+      </a>
+    </div>
+
+    <!-- Десктоп: PDF (md и выше) -->
+    <div class="hidden md:block">
+      <!-- object обычно стабильнее, чем iframe, и позволяет fallback -->
+      <object data="{{ pdf_url }}" type="application/pdf" class="w-full pdf-frame rounded-lg shadow">
+        <p class="p-4 bg-stone-50 rounded-lg">
+          {% trans "Не удалось встроить PDF. " %}
+          <a class="text-emerald-700 underline" href="{{ pdf_url }}" target="_blank">{% trans "Открыть в новой вкладке" %}</a>
+        </p>
+      </object>
+    </div>
+
+    <!-- Мобильная галерея: WebP (только < md) -->
+    <div class="block md:hidden">
+      {% if webp_pages %}
+        <!-- Вариант 1: вертикальная лента (лёгкая прокрутка) -->
+        <div class="space-y-3">
+          {% for url in webp_pages %}
+            <figure class="rounded-lg overflow-hidden shadow bg-white">
+              <img
+                src="{{ url }}"
+                alt="{% trans 'Страница меню' %} {{ forloop.counter }}"
+                loading="lazy"
+                class="w-full h-auto block"
+                width="1080" height="1440"
+              >
+            </figure>
+          {% endfor %}
+        </div>
+
+        <!-- Кнопка «Скачать PDF» и подсказка -->
+        <div class="mt-5 flex items-center justify-between">
+          <a href="{{ pdf_url }}" class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-stone-800 text-white">
+            {% trans "Скачать PDF" %}
+          </a>
+          <span class="text-xs text-stone-500">{% trans "Изображения сжаты для быстрого просмотра" %}</span>
+        </div>
+      {% else %}
+        <!-- Если webp не нашли — упадём на PDF-ссылку -->
+        <div class="p-4 rounded-lg bg-stone-50">
+          <p class="mb-3">{% trans "Мобильная версия меню временно недоступна." %}</p>
+          <a href="{{ pdf_url }}" class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-stone-800 text-white">
+            {% trans "Открыть PDF" %}
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </main>
+</body>
+</html>
+{% endblock content %}
