@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-28 08:27+0000\n"
+"POT-Creation-Date: 2025-12-05 13:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,54 +18,80 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: core/forms.py:6 templates/core/reserve.html:28
+#: core/forms.py:10
+msgid "1 этаж Dolce Bakery& karaoke"
+msgstr ""
+
+#: core/forms.py:11
+msgid "2 этаж Dolce Family"
+msgstr ""
+
+#: core/forms.py:12
+msgid "3 этаж ресторан 'MOHE'"
+msgstr ""
+
+#: core/forms.py:26 templates/core/reserve.html:28
 msgid "Имя"
 msgstr "Name"
 
-#: core/forms.py:8
+#: core/forms.py:28
 msgid "Ваше имя"
 msgstr "your name"
 
-#: core/forms.py:11 templates/core/about.html:52 templates/core/about.html:57
+#: core/forms.py:31 templates/core/about.html:61 templates/core/about.html:66
 #: templates/core/reserve.html:33
 msgid "Телефон"
 msgstr "Telephone"
 
-#: core/forms.py:13
+#: core/forms.py:33
 #, fuzzy
 #| msgid "Телефон"
 msgid "Ваш телефон"
 msgstr "Telephone"
 
-#: core/forms.py:16 templates/core/reserve.html:38
+#: core/forms.py:36 templates/core/reserve.html:39
 msgid "Дата"
 msgstr "Date"
 
-#: core/forms.py:20 templates/core/reserve.html:43
+#: core/forms.py:40 templates/core/reserve.html:44
 msgid "Время"
 msgstr "Time"
 
-#: core/forms.py:24 templates/core/reserve.html:48
+#: core/forms.py:44 templates/core/reserve.html:50
 msgid "Гостей"
 msgstr "Guests"
 
-#: core/forms.py:29 templates/core/reserve.html:55
+#: core/forms.py:49 templates/core/reserve.html:64
 msgid "Комментарий"
 msgstr "Comment"
 
-#: core/forms.py:33
+#: core/forms.py:53
 msgid "Пожелания: у окна, без лука, день рождения..."
 msgstr "Wishes: by the window, no onions, birthday..."
 
-#: core/models.py:6 core/models.py:23
+#: core/forms.py:58 templates/core/reserve.html:57
+msgid "Этаж"
+msgstr ""
+
+#: core/models.py:7 core/models.py:32
 msgid "Название"
 msgstr "Title"
 
-#: core/models.py:28 templates/core/home.html:103
+#: core/models.py:13
+msgid "Порядок"
+msgstr ""
+
+#: core/models.py:37 templates/core/home.html:113
 msgid "Цена"
 msgstr "Price"
 
-#: core/views.py:162
+#: core/models.py:42
+#, fuzzy
+#| msgid "Открыть корзину"
+msgid "Порядок в категории"
+msgstr "Open the shopping cart"
+
+#: core/views.py:172
 #, python-brace-format
 msgid ""
 "Здравствуйте! Хочу забронировать стол.\n"
@@ -74,6 +100,7 @@ msgid ""
 "Дата: {date}\n"
 "Время: {time}\n"
 "Гостей: {guests}\n"
+"Этаж: {floor}\n"
 "Комментарий: {comment}"
 msgstr ""
 
@@ -81,11 +108,11 @@ msgstr ""
 msgid "О нас — Dolce Vita Family"
 msgstr "About us — Dolce Vita Family"
 
-#: templates/core/about.html:15
-msgid "Ресторанный комплекс «Dolce Vita»"
-msgstr "Restaurant complex “Dolce Vita”"
+#: templates/core/about.html:32
+msgid " «Dolce Vita»"
+msgstr ""
 
-#: templates/core/about.html:19
+#: templates/core/about.html:36
 msgid ""
 "\n"
 "          Частичка Италии в южной столице Кыргызстана: атмосфера уюта, "
@@ -103,35 +130,27 @@ msgstr ""
 " and the pizza dough is rolled out by hand — just like in Italy.\n"
 " "
 
-#: templates/core/about.html:29
-msgid "Бесплатная доставка по городу"
-msgstr "Free city delivery"
-
-#: templates/core/about.html:32
-msgid "Halal — Dolce Vita & Mone"
-msgstr ""
-
-#: templates/core/about.html:41
+#: templates/core/about.html:50
 msgid "Адрес"
 msgstr "Address"
 
-#: templates/core/about.html:42 templates/core/about.html:83
+#: templates/core/about.html:51 templates/core/about.html:92
 msgid "г. Ош, ул. Шакирова 108а"
 msgstr "Osh, Shakirova Street 108a"
 
-#: templates/core/about.html:46
+#: templates/core/about.html:55
 msgid "Часы"
 msgstr "Watch"
 
-#: templates/core/about.html:47 templates/core/about.html:48
+#: templates/core/about.html:56 templates/core/about.html:57
 msgid "10:00–00:00"
 msgstr ""
 
-#: templates/core/about.html:70
+#: templates/core/about.html:79
 msgid "Наш шеф — Massimo Girardi"
 msgstr "Our chef is Massimo Girardi"
 
-#: templates/core/about.html:72
+#: templates/core/about.html:81
 msgid ""
 "\n"
 "          Родом из Брешии (север Италии). Для настоящей итальянской пиццы "
@@ -149,15 +168,15 @@ msgstr ""
 " The main secret is to put your soul into each dish.\n"
 " "
 
-#: templates/core/about.html:81
+#: templates/core/about.html:90
 msgid "Бронирование столов"
 msgstr "Table reservations"
 
-#: templates/core/about.html:86
+#: templates/core/about.html:95
 msgid "Показать на карте"
 msgstr "Show on the map"
 
-#: templates/core/about.html:98
+#: templates/core/about.html:107
 msgid ""
 "\n"
 "      Рядом с «Dolce Vita» работает ресторан <b>Mone</b> на <b>3-м этаже</b> "
@@ -173,27 +192,25 @@ msgstr ""
 "traditions. Cozy areas and VIP rooms are available.\n"
 " "
 
-#: templates/core/about.html:105 templates/core/base.html:58
-#: templates/core/base.html:110 templates/core/home.html:40
+#: templates/core/about.html:114 templates/core/base.html:92
+#: templates/core/base.html:144
 msgid "Меню"
 msgstr "Menu"
 
-#: templates/core/about.html:106 templates/core/base.html:60
-#: templates/core/base.html:111
+#: templates/core/about.html:115 templates/core/base.html:94
+#: templates/core/base.html:145
 msgid "Контакты"
 msgstr "Contacts"
 
-#: templates/core/about.html:109 templates/core/base.html:135
-#, fuzzy
-#| msgid "Готовы оформить заказ?"
+#: templates/core/about.html:118 templates/core/base.html:169
 msgid "Оформить заказ в WhatsApp"
-msgstr "Are you ready to place an order?"
+msgstr "Place an order in WhatsApp"
 
-#: templates/core/base.html:10
+#: templates/core/base.html:11
 msgid "Dolce Vita Family — italian restaurant"
 msgstr ""
 
-#: templates/core/base.html:11
+#: templates/core/base.html:12
 #, fuzzy
 #| msgid ""
 #| "Аутентичная итальянская кухня: дровяная пицца, паста, салаты и десерты.\n"
@@ -206,81 +223,63 @@ msgstr ""
 "Authentic Italian cuisine: wood-fired pizza, pasta, salads, and desserts.\n"
 "Add dishes to your cart and place your order in WhatsApp with onetouch."
 
-#: templates/core/base.html:49
+#: templates/core/base.html:83
 msgid "На главную"
 msgstr "Go to the main page"
 
-#: templates/core/base.html:57
+#: templates/core/base.html:91
 msgid "Основное меню"
 msgstr "Main menu"
 
-#: templates/core/base.html:59 templates/core/base.html:109
+#: templates/core/base.html:93 templates/core/base.html:143
 msgid "Доставка"
 msgstr "Delivery"
 
-#: templates/core/base.html:61 templates/core/base.html:112
-#, fuzzy
-#| msgid "Бронирование столов"
+#: templates/core/base.html:95 templates/core/base.html:146
 msgid "Бронирование"
-msgstr "Table reservations"
+msgstr "Reservations"
 
-#: templates/core/base.html:62 templates/core/base.html:113
+#: templates/core/base.html:96 templates/core/base.html:147
 msgid "О нас"
 msgstr "About us"
 
-#: templates/core/base.html:71
+#: templates/core/base.html:105
 msgid "Выбор языка"
 msgstr "Language selection"
 
-#: templates/core/base.html:83
+#: templates/core/base.html:117
 #, fuzzy
 #| msgid "Открыть корзину"
 msgid "Открыть меню"
 msgstr "Open the shopping cart"
 
-#: templates/core/base.html:91
-#, fuzzy
-#| msgid "Открыть корзину"
+#: templates/core/base.html:125
 msgid "Перейти в корзину"
-msgstr "Open the shopping cart"
+msgstr "Go to cart"
 
-#: templates/core/base.html:100 templates/core/cart.html:9
-#, fuzzy
-#| msgid "В корзину"
-msgid "Корзина"
-msgstr "in a basket"
-
-#: templates/core/base.html:107
+#: templates/core/base.html:141
 msgid "Мобильное меню"
 msgstr "Mobile menu"
 
-#: templates/core/base.html:140
-#, fuzzy
-#| msgid "Оформить в WhatsApp"
+#: templates/core/base.html:174
 msgid "Заказать в WhatsApp"
 msgstr "Apply on WhatsApp"
 
-#: templates/core/base.html:150
+#: templates/core/base.html:184
 msgid "Пицца из печи · Паста · Десерты"
 msgstr "Pizza from the oven · Pasta · Desserts"
 
-#: templates/core/base.html:156
+#: templates/core/base.html:190
 #, fuzzy
 #| msgid "В корзину"
 msgid "Добавлено в корзину"
-msgstr "in a basket"
-
-#: templates/core/cart.html:13
-#, fuzzy
-#| msgid "В корзину"
-msgid "Корзина пуста."
-msgstr "in a basket"
+msgstr "added to cart"
 
 #: templates/core/cart.html:16
 msgid "К меню"
 msgstr "To the menu"
 
-#: templates/core/cart.html:30 templates/core/home.html:86
+#: templates/core/cart.html:30
 msgid "Фото"
 msgstr "Photo"
 
@@ -290,7 +289,7 @@ msgstr "Price per unit."
 
 #: templates/core/cart.html:38 templates/core/cart.html:64
 #: templates/core/cart.html:76 templates/core/cart.html:108
-#: templates/core/home.html:104
+#: templates/core/home.html:114
 msgid "сом"
 msgstr ""
 
@@ -344,11 +343,7 @@ msgstr "Total"
 msgid "В WhatsApp"
 msgstr "On WhatsApp"
 
-#: templates/core/home.html:21
-msgid "restaurant"
-msgstr ""
-
-#: templates/core/home.html:26
+#: templates/core/home.html:36
 msgid ""
 "Добро пожаловать в ресторанный комплекс «Dolce Vita Family»!\n"
 "Здесь итальянские традиции встречаются с мировыми кулинарными "
@@ -363,44 +358,45 @@ msgid ""
 "Приятного аппетита и чудесного настроения!\n"
 msgstr ""
 "Welcome to the Dolce Vita Family restaurant complex!\n"
-"Here, Italian traditions meet culinary inspirations from around the "
-"world.\n"
-"Each dish is a harmony of freshness, quality, and creativity, prepared "
-"with love for unforgettable experiences.\n"
-"Immerse yourself in a cozy atmosphere, enjoy the variety of flavors and "
-"feel our sincere hospitality.\n"
-"Dolce Vita Family is a place where every guest feels special. "
-"Enjoy your meal and have a wonderful time!\n"
+"Here, Italian traditions meet culinary inspirations from around the world.\n"
+"Each dish is a harmony of freshness, quality, and creativity, prepared with "
+"love for unforgettable experiences.\n"
+"Immerse yourself in a cozy atmosphere, enjoy the variety of flavors and feel "
+"our sincere hospitality.\n"
+"Dolce Vita Family is a place where every guest feels special. Enjoy your "
+"meal and have a wonderful time!\n"
 
-#: templates/core/home.html:49
+#: templates/core/home.html:60
 msgid "Все"
 msgstr "All"
 
-#: templates/core/home.html:112
+#: templates/core/home.html:122
 msgid "Кол-во"
 msgstr "Quantity"
 
-#: templates/core/home.html:116
+#: templates/core/home.html:126
 msgid "В корзину"
-msgstr "in a basket"
+msgstr "Add to cart"
 
-#: templates/core/home.html:132
+#: templates/core/base.html:134 templates/core/cart.html:9
+msgid "Корзина"
+msgstr "Cart"
+
+#: templates/core/home.html:142
 msgid "Готовы оформить заказ?"
 msgstr "Are you ready to place an order?"
 
-#: templates/core/home.html:133
+#: templates/core/home.html:143
 msgid "Соберите блюда в корзину — оплата и подтверждение в WhatsApp."
 msgstr "Add the dishes to your cart and pay and confirm via WhatsApp."
 
-#: templates/core/home.html:135
+#: templates/core/home.html:145
 msgid "Открыть корзину"
 msgstr "Open the shopping cart"
 
 #: templates/core/reserve.html:3
-#, fuzzy
-#| msgid "Бронирование столов"
 msgid "Бронирование стола — Dolce Vita Family"
-msgstr "Table reservations"
+msgstr "Table Reservation — Dolce Vita Family"
 
 #: templates/core/reserve.html:4
 msgid ""
@@ -411,10 +407,8 @@ msgstr ""
 "request via WhatsApp."
 
 #: templates/core/reserve.html:9
-#, fuzzy
-#| msgid "Бронирование столов"
 msgid "Бронирование стола"
-msgstr "Table reservations"
+msgstr "Table reservation"
 
 #: templates/core/reserve.html:10
 msgid "Заполните форму — заявка откроется в WhatsApp для подтверждения."
@@ -423,17 +417,16 @@ msgstr ""
 
 #: templates/core/reserve.html:20
 msgid ""
-"В настройках не указан номер WhatsApp. Добавьте WHATSAPP_NUMBER в "
-"settings.py."
+"В настройках не указан номер WhatsApp. Добавьте WHATSAPP_PHONE в settings.py."
 msgstr ""
 
-#: templates/core/reserve.html:68
+#: templates/core/reserve.html:73
 #, fuzzy
 #| msgid "Оформить в WhatsApp"
 msgid "Отправить в WhatsApp"
 msgstr "Apply on WhatsApp"
 
-#: templates/core/reserve.html:72
+#: templates/core/reserve.html:77
 msgid "Отмена"
 msgstr "Cancel"
 
@@ -1715,6 +1708,12 @@ msgstr ""
 #: venv/lib/python3.13/site-packages/modeltranslation/widgets.py:32
 msgid "None"
 msgstr ""
+
+#~ msgid "Ресторанный комплекс «Dolce Vita»"
+#~ msgstr "Restaurant complex “Dolce Vita”"
+
+#~ msgid "Бесплатная доставка по городу"
+#~ msgstr "Free city delivery"
 
 #~ msgid ""
 #~ "Печь на дровах, свежая паста, салаты и десерты. Сбор заказа — в WhatsApp."
