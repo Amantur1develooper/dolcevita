@@ -71,11 +71,11 @@
 
   {% block head_extra %}{% endblock %}
 </head>
-<body>
+<body class="min-h-screen flex flex-col">
 <div class="page-bg" aria-hidden="true"></div>
 
 <!-- HEADER -->
-<header class="sticky top-0 z-50 bg-white/100 backdrop-blur border-b border-black/5">
+<header class="sticky top-0 z-50 bg-white/100 backdrop-blur border-b border-black/5 shrink-0">
   <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
     <a href="{% url 'core:home' %}" class="flex items-center gap-3" aria-label="{% trans 'На главную' %}">
       <div class="brand text-2xl sm:text-3xl font-semibold italic" >
@@ -153,8 +153,10 @@
 
 
 <!-- MAIN -->
-<main class="max-w-6xl mx-auto px-4 py-6 pb-24 md:pb-6">
+<main class="flex-1">
+  <div class="max-w-6xl mx-auto px-4 py-6 pb-24 md:pb-6">
   {% block content %}{% endblock %}
+  </div>
 </main>
 
 {% block votchap %}
@@ -172,15 +174,22 @@
 {% endblock votchap %}
 
 <!-- FOOTER -->
-<footer class="mt-10 border-t border-black/5 bg-white/70 backdrop-blur">
+<footer class="mt-0 shrink-0 border-t border-black/5 bg-white/70 backdrop-blur">
   <div class="flag-x h-1 w-full"></div>
   <div class="max-w-6xl mx-auto px-4 py-6 text-sm text-stone-600">
     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
       <div>© Dolce Vita Family, {% now "Y" %}</div>
       <div class="text-stone-500">{% trans "Пицца из печи · Паста · Десерты" %}</div>
+      <div class="text-stone-500">
+       
+        <span class="opacity-80">Made by</span>
+        <span class="font-semibold"> <a href="https://t.me/amanturN1" target="_blank" class="underline decoration-dotted hover:text-stone-700">Amantur</a>
+</span>
+      </div>
     </div>
   </div>
 </footer>
+
 
 <div id="toast" class="hidden fixed left-1/2 -translate-x-1/2 bottom-24 z-50">
   <div class="bg-black text-white px-4 py-2 rounded-full shadow-xl">{% trans "Добавлено в корзину" %}</div>
