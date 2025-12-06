@@ -50,7 +50,7 @@ class ReservationForm(forms.Form):
         required=False,
         widget=forms.Textarea(attrs={
             "rows":3,
-            "placeholder": _("Пожелания: у окна, без лука, день рождения..."),
+            "placeholder": _("Пожелания: у окна, на террасе, день рождения..."),
             "class":"w-full border rounded-xl px-3 py-2"
         })
     )

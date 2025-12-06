@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-05 23:19+0600\n"
+"POT-Creation-Date: 2025-12-06 22:39+0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,7 +27,7 @@ msgid "2 этаж Dolce Family"
 msgstr ""
 
 #: core/forms.py:12
-msgid "3 этаж ресторан 'MOHE'"
+msgid "3 этаж restaurant MONE"
 msgstr ""
 
 #: core/forms.py:26 templates/core/reserve.html:28
@@ -66,8 +66,8 @@ msgid "Комментарий"
 msgstr "Комментарий"
 
 #: core/forms.py:53
-msgid "Пожелания: у окна, без лука, день рождения..."
-msgstr "Каалоо тилектер: терезенин жанында, пияз жок, туулган күн..."
+msgid "Пожелания: у окна, на террасе, день рождения..."
+msgstr "Каалоо тилектер: терезенин жанында, террасада, туулган күн..."
 
 #: core/forms.py:58 templates/core/reserve.html:57
 msgid "Этаж"
@@ -81,7 +81,7 @@ msgstr "Аталышы"
 msgid "Порядок"
 msgstr ""
 
-#: core/models.py:37 templates/core/home.html:113
+#: core/models.py:37 templates/core/home.html:164
 msgid "Цена"
 msgstr "Баасы"
 
@@ -204,6 +204,7 @@ msgid "Меню"
 msgstr "Меню"
 
 #: templates/core/base.html:92 templates/core/base.html:142
+#: templates/core/home.html:79
 msgid "Доставка"
 msgstr "Жеткирүү"
 
@@ -288,8 +289,7 @@ msgid "Цена за шт."
 msgstr "Даана үчүн баа."
 
 #: templates/core/cart.html:38 templates/core/cart.html:64
-#: templates/core/cart.html:76 templates/core/cart.html:108
-#: templates/core/home.html:114
+#: templates/core/cart.html:76 templates/core/home.html:165
 msgid "сом"
 msgstr ""
 
@@ -322,8 +322,8 @@ msgid "Адрес (необязательно)"
 msgstr "Дареги (милдеттүү эмес)"
 
 #: templates/core/cart.html:85
-msgid "Комментарий (острота, без лука...)"
-msgstr "Комментарий (ачуу, пияз жок...)"
+msgid "Комментарий (острота, с палочками...)"
+msgstr "Комментарий (ачуу, таякчалар менен...)"
 
 #: templates/core/cart.html:90
 msgid "Оформить в WhatsApp"
@@ -333,23 +333,15 @@ msgstr "Кирүү"
 msgid "* Заказ не списывает деньги — вы подтверждаете его в чате WhatsApp."
 msgstr "Буйрутма үчүн акча чегерилбейт — аны WhatsApp чатында тастыктайсыз."
 
-#: templates/core/cart.html:108
-msgid "Итого"
-msgstr "Бардыгы"
-
-#: templates/core/cart.html:111
-msgid "В WhatsApp"
-msgstr "В WhatsApp"
-
-#: templates/core/contacts.html:11
+#: templates/core/contacts.html:14
 msgid "Свяжитесь с нами"
 msgstr "Биз менен байланыш"
 
-#: templates/core/contacts.html:12
+#: templates/core/contacts.html:15
 msgid "Бронирование столов, мероприятия, доставка — мы на связи каждый день."
 msgstr "Стол ээлөө, иш — чаралар, жеткирүү-Биз күн сайын байланыштабыз."
 
-#: templates/core/home.html:36
+#: templates/core/home.html:87
 msgid ""
 "Добро пожаловать в ресторанный комплекс «Dolce Vita Family»!\n"
 "Здесь итальянские традиции встречаются с мировыми кулинарными "
@@ -375,27 +367,27 @@ msgstr ""
 "«Dolce Vita Family» — ар бир конок өзүн өзгөчө сезген жай. Тамагыңыздар "
 "таттуу болуп, маанайыңыздар укмуш болсун!\n"
 
-#: templates/core/home.html:60
+#: templates/core/home.html:111
 msgid "Все"
 msgstr "Бардык"
 
-#: templates/core/home.html:122
+#: templates/core/home.html:173
 msgid "Кол-во"
 msgstr "Саны"
 
-#: templates/core/home.html:126
+#: templates/core/home.html:177
 msgid "В корзину"
 msgstr "Себет"
 
-#: templates/core/home.html:142
+#: templates/core/home.html:193
 msgid "Готовы оформить заказ?"
 msgstr "Текшерүүгө даярсызбы?"
 
-#: templates/core/home.html:143
+#: templates/core/home.html:194
 msgid "Соберите блюда в корзину — оплата и подтверждение в WhatsApp."
 msgstr "Тамакты себетке чогултуңуз-төлөм жана ырастоо Мтада."
 
-#: templates/core/home.html:145
+#: templates/core/home.html:196
 msgid "Открыть корзину"
 msgstr "Таштанды ачуу"
 
@@ -1733,6 +1725,12 @@ msgstr ""
 #: venv/lib/python3.13/site-packages/modeltranslation/widgets.py:32
 msgid "None"
 msgstr ""
+
+#~ msgid "Итого"
+#~ msgstr "Бардыгы"
+
+#~ msgid "В WhatsApp"
+#~ msgstr "В WhatsApp"
 
 #~ msgid "Наш шеф — Massimo Girardi"
 #~ msgstr "Биздин шеф - Massimo Girardi"

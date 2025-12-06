@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-05 23:19+0600\n"
+"POT-Creation-Date: 2025-12-06 22:39+0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,7 +27,7 @@ msgid "2 этаж Dolce Family"
 msgstr ""
 
 #: core/forms.py:12
-msgid "3 этаж ресторан 'MOHE'"
+msgid "3 этаж restaurant MONE"
 msgstr ""
 
 #: core/forms.py:26 templates/core/reserve.html:28
@@ -66,8 +66,8 @@ msgid "Комментарий"
 msgstr "Comment"
 
 #: core/forms.py:53
-msgid "Пожелания: у окна, без лука, день рождения..."
-msgstr "Wishes: by the window, no onions, birthday..."
+msgid "Пожелания: у окна, на террасе, день рождения..."
+msgstr "Wishes: by the window, on the terrace, birthday..."
 
 #: core/forms.py:58 templates/core/reserve.html:57
 msgid "Этаж"
@@ -81,7 +81,7 @@ msgstr "Title"
 msgid "Порядок"
 msgstr ""
 
-#: core/models.py:37 templates/core/home.html:113
+#: core/models.py:37 templates/core/home.html:164
 msgid "Цена"
 msgstr "Price"
 
@@ -203,6 +203,7 @@ msgid "Меню"
 msgstr "Menu"
 
 #: templates/core/base.html:92 templates/core/base.html:142
+#: templates/core/home.html:79
 msgid "Доставка"
 msgstr "Delivery"
 
@@ -277,8 +278,7 @@ msgid "Цена за шт."
 msgstr "Price per unit."
 
 #: templates/core/cart.html:38 templates/core/cart.html:64
-#: templates/core/cart.html:76 templates/core/cart.html:108
-#: templates/core/home.html:114
+#: templates/core/cart.html:76 templates/core/home.html:165
 msgid "сом"
 msgstr "som"
 
@@ -311,8 +311,8 @@ msgid "Адрес (необязательно)"
 msgstr "Address (optional)"
 
 #: templates/core/cart.html:85
-msgid "Комментарий (острота, без лука...)"
-msgstr "Comment (spicy, no onions...)"
+msgid "Комментарий (острота, с палочками...)"
+msgstr "Comment (spicy, with chopsticks...)"
 
 #: templates/core/cart.html:90
 msgid "Оформить в WhatsApp"
@@ -324,23 +324,15 @@ msgstr "Apply on WhatsApp"
 msgid "* Заказ не списывает деньги — вы подтверждаете его в чате WhatsApp."
 msgstr "Add the dishes to your cart and pay and confirm via WhatsApp."
 
-#: templates/core/cart.html:108
-msgid "Итого"
-msgstr "Total"
-
-#: templates/core/cart.html:111
-msgid "В WhatsApp"
-msgstr "On WhatsApp"
-
-#: templates/core/contacts.html:11
+#: templates/core/contacts.html:14
 msgid "Свяжитесь с нами"
 msgstr "Contact us"
 
-#: templates/core/contacts.html:12
+#: templates/core/contacts.html:15
 msgid "Бронирование столов, мероприятия, доставка — мы на связи каждый день."
 msgstr "Table reservations, events, and delivery — we're available every day."
 
-#: templates/core/home.html:36
+#: templates/core/home.html:87
 msgid ""
 "Добро пожаловать в ресторанный комплекс «Dolce Vita Family»!\n"
 "Здесь итальянские традиции встречаются с мировыми кулинарными "
@@ -363,27 +355,27 @@ msgstr ""
 "Dolce Vita Family is a place where every guest feels special. Enjoy your "
 "meal and have a wonderful time!\n"
 
-#: templates/core/home.html:60
+#: templates/core/home.html:111
 msgid "Все"
 msgstr "All"
 
-#: templates/core/home.html:122
+#: templates/core/home.html:173
 msgid "Кол-во"
 msgstr "Quantity"
 
-#: templates/core/home.html:126
+#: templates/core/home.html:177
 msgid "В корзину"
 msgstr "Add to cart"
 
-#: templates/core/home.html:142
+#: templates/core/home.html:193
 msgid "Готовы оформить заказ?"
 msgstr "Are you ready to place an order?"
 
-#: templates/core/home.html:143
+#: templates/core/home.html:194
 msgid "Соберите блюда в корзину — оплата и подтверждение в WhatsApp."
 msgstr "Add the dishes to your cart and pay and confirm via WhatsApp."
 
-#: templates/core/home.html:145
+#: templates/core/home.html:196
 msgid "Открыть корзину"
 msgstr "Open the shopping cart"
 
@@ -1733,6 +1725,12 @@ msgstr ""
 #: venv/lib/python3.13/site-packages/modeltranslation/widgets.py:32
 msgid "None"
 msgstr ""
+
+#~ msgid "Итого"
+#~ msgstr "Total"
+
+#~ msgid "В WhatsApp"
+#~ msgstr "On WhatsApp"
 
 #~ msgid "Наш шеф — Massimo Girardi"
 #~ msgstr "Our chef is Massimo Girardi"

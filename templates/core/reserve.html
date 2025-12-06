@@ -23,7 +23,7 @@
 
   <form method="post" class="mt-6 grid grid-cols-1 gap-4 bg-white/80 backdrop-blur rounded-2xl p-5 shadow ring-1 ring-black/5">
     {% csrf_token %}
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="grid grid-cols-1 md:grid-co÷ls-2 gap-4">
       <div>
         <label class="block text-sm text-stone-600 mb-1" for="{{ form.name.id_for_label }}">{% trans "Имя" %}</label>
         {{ form.name }}
