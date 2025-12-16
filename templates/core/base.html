@@ -162,7 +162,7 @@
 {% block votchap %}
 <!-- Floating WhatsApp CTA -->
 <a href="{% url 'core:cart_detail' %}"
-   class="fixed right-4 bottom-3 z-50 inline-flex items-center gap-2 px-4 py-3 rounded-full text-white font-semibold shadow-xl"
+   class="fixed right-4 bottom-5 z-50 inline-flex items-center gap-2 px-4 py-3 rounded-full text-white font-semibold shadow-xl"
    style="background:#25D366"
    aria-label="{% trans 'Оформить заказ в WhatsApp' %}">
   <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
@@ -178,14 +178,15 @@
   <div class="flag-x h-1 w-full"></div>
   <div class="max-w-6xl mx-auto px-4 py-6 text-sm text-stone-600">
     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-      <div>© Dolce Vita Family, {% now "Y" %}</div>
-      <div class="text-stone-500">{% trans "Пицца из печи · Паста · Десерты" %}</div>
       <div class="text-stone-500">
        
         <span class="opacity-80">Made by</span>
         <span class="font-semibold"> <a href="https://t.me/amanturN1" target="_blank" class="underline decoration-dotted hover:text-stone-700">Amantur</a>
-</span>
+        </span>
       </div>
+      <div>© Dolce Vita Family, {% now "Y" %}</div>
+      <div class="text-stone-500">{% trans "Пицца из печи · Паста · Десерты" %}</div>
+      
     </div>
   </div>
 </footer>
