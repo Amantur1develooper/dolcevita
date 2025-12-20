@@ -158,9 +158,16 @@
                     style="background-image:linear-gradient(180deg,#009246 0 33%,#ffffff 33% 66%,#ce2b37 66% 100%);"></span>
 
               <!-- Фото -->
-              {% if p.image %}
-                <img src="{{ p.image.url }}" alt="{% t p 'name' %}"
-                     class="aspect-[4/3] w-full object-cover transition group-hover:scale-[1.03]">
+               {% if p.image %}
+  <img
+    src="{{ p.image.url }}"
+    alt="{% t p 'name' %}"
+    loading="lazy"
+    decoding="async"
+    width="600"
+    height="450"
+    class="aspect-[4/3] w-full object-cover transition group-hover:scale-[1.03]"
+  >
               {% else %}
               {% endif %}
 
