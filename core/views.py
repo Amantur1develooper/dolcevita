@@ -17,7 +17,7 @@ from .models import Category, Product  # поправь импорт под се
 def home(request):
     cats = (
         Category.objects.all()
-        .only("id", "slug", "name", "name_ru", "name_ky", "name_en")  # если есть такие поля
+        .only("id", "slug", "name", "name_ky", "name_en")  # если есть такие поля
         .prefetch_related(
             Prefetch(
                 "products",
@@ -27,7 +27,7 @@ def home(request):
                         "id",
                         "price",
                         "image",
-                        "image_thumb",  # если добавишь миниатюры
+                        # "image_thumb",  # если добавишь миниатюры
                         "name", "name_ru", "name_ky", "name_en",
                         "short_desc", "short_desc_ru", "short_desc_ky", "short_desc_en",
                     )
