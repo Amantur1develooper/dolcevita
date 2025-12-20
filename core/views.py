@@ -28,8 +28,8 @@ def home(request):
                         "price",
                         "image",
                         # "image_thumb",  # если добавишь миниатюры
-                        "name", "name_ru", "name_ky", "name_en",
-                        "short_desc", "short_desc_ru", "short_desc_ky", "short_desc_en",
+                        "name", "name_ky", "name_en",
+                        
                     )
                     .order_by("id")
                 ),
