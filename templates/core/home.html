@@ -159,15 +159,16 @@
 
               <!-- Фото -->
                {% if p.image %}
-  <img
-    src="{{ p.image.url }}"
-    alt="{% t p 'name' %}"
-    loading="lazy"
-    decoding="async"
-    width="600"
-    height="450"
-    class="aspect-[4/3] w-full object-cover transition group-hover:scale-[1.03]"
-  >
+<img
+  src="{{ p.image.url }}"
+  alt="{% t p 'name' %}"
+  loading="lazy"
+  decoding="async"
+  width="600"
+  height="450"
+  class="aspect-[4/3] w-full object-cover transition group-hover:scale-[1.03]"
+>
+
               {% else %}
               {% endif %}
 

@@ -10,10 +10,37 @@ from urllib.parse import quote_plus
 
 from .models import Product, Category
 from .cart import Cart
+from django.shortcuts import render
+from django.db.models import Prefetch
+from .models import Category, Product  # поправь импорт под себя
 
 def home(request):
-    cats = Category.objects.all().prefetch_related("products")
+    cats = (
+        Category.objects.all()
+        .only("id", "slug", "name", "name_ru", "name_ky", "name_en")  # если есть такие поля
+        .prefetch_related(
+            Prefetch(
+                "products",
+                queryset=(
+                    Product.objects.filter(is_active=True)
+                    .only(
+                        "id",
+                        "price",
+                        "image",
+                        "image_thumb",  # если добавишь миниатюры
+                        "name", "name_ru", "name_ky", "name_en",
+                        "short_desc", "short_desc_ru", "short_desc_ky", "short_desc_en",
+                    )
+                    .order_by("id")
+                ),
+            )
+        )
+    )
     return render(request, "core/home.html", {"cats": cats})
+
+# def home(request):
+#     cats = Category.objects.all().prefetch_related("products")
+#     return render(request, "core/home.html", {"cats": cats})
 
 def add_to_cart(request, product_id):
     if request.method != "POST":
