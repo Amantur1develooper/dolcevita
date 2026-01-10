@@ -161,13 +161,14 @@
                {% if p.image %}
 <img
   src="{{ p.image.url }}"
+  srcset="{{ p.image.url }} 600w, {{ p.image.url }} 1200w"
+  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
   alt="{% t p 'name' %}"
-  loading="lazy"
-  decoding="async"
-  width="600"
-  height="450"
+  width="600" height="450"
+  loading="lazy" decoding="async"
   class="aspect-[4/3] w-full object-cover transition group-hover:scale-[1.03]"
 >
+
 
               {% else %}
               {% endif %}

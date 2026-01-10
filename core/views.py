@@ -1,7 +1,6 @@
 from django.shortcuts import render
 
-# Create your views here.
-# core/views.py
+
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import JsonResponse, HttpResponseBadRequest, HttpResponseRedirect
 from django.urls import reverse
@@ -11,13 +10,12 @@ from urllib.parse import quote_plus
 from .models import Product, Category
 from .cart import Cart
 from django.shortcuts import render
-from django.db.models import Prefetch
-from .models import Category, Product  # поправь импорт под себя
+from django.db.models import Prefetch# поправь импорт под себя
 
 def home(request):
     cats = (
         Category.objects.all()
-        .only("id", "slug", "name", "name_ky", "name_en")  # если есть такие поля
+        .only("id", "slug", "name", "name_ky", "name_en")
         .prefetch_related(
             Prefetch(
                 "products",
@@ -27,9 +25,8 @@ def home(request):
                         "id",
                         "price",
                         "image",
-                        # "image_thumb",  # если добавишь миниатюры
-                        "name", "name_ky", "name_en",
-                        
+                        "name", "name_ky", "name_en",  # <- важно
+                        "category_id",  # чуть быстрее для FK
                     )
                     .order_by("id")
                 ),
@@ -37,6 +34,30 @@ def home(request):
         )
     )
     return render(request, "core/home.html", {"cats": cats})
+
+# def home(request):
+#     cats = (
+#         Category.objects.all()
+#         .only("id", "slug", "name", "name_ky", "name_en")  # если есть такие поля
+#         .prefetch_related(
+#             Prefetch(
+#                 "products",
+#                 queryset=(
+#                     Product.objects.filter(is_active=True)
+#                     .only(
+#                         "id",
+#                         "price",
+#                         "image",
+#                         # "image_thumb",  # если добавишь миниатюры
+#                         "name", "name_ky", "name_en",
+                        
+#                     )
+#                     .order_by("id")
+#                 ),
+#             )
+#         )
+#     )
+#     return render(request, "core/home.html", {"cats": cats})
 
 # def home(request):
 #     cats = Category.objects.all().prefetch_related("products")
@@ -56,17 +77,7 @@ def add_to_cart(request, product_id):
 
     # fallback (если кто-то отправит обычный POST)
     return redirect("core:cart_detail")
-# def add_to_cart(request, product_id):
-#     if request.method != "POST":
-#         return HttpResponseBadRequest("POST only")
-#     qty = int(request.POST.get("qty", 1))
-#     get_object_or_404(Product, pk=product_id, is_active=True)
-#     cart = Cart(request)
-#     cart.add(product_id, qty)
-#     # для SPA-ощущения можно вернуть JSON
-#     if request.headers.get("x-requested-with") == "XMLHttpRequest":
-#         return JsonResponse({"ok": True, "count": len(cart)})
-#     return redirect("core:cart_detail")
+
 
 def update_cart(request, product_id):
     if request.method != "POST":
@@ -127,44 +138,7 @@ def checkout_whatsapp(request):
 
     text = quote_plus("\n".join(lines))
     return HttpResponseRedirect(f"https://wa.me/{phone}?text={text}")
-# def checkout_whatsapp(request):
-#     """
-#     Генерируем текст заказа и редиректим в WhatsApp.
-#     Номер берём из settings.WHATSAPP_PHONE = '+39XXXXXXXXXX'
-#     """
-#     phone = getattr(settings, "WHATSAPP_PHONE", "").replace("+", "")
-#     if not phone:
-#         return HttpResponseBadRequest("WHATSAPP_PHONE не задан в settings")
 
-#     cart = Cart(request)
-#     if len(cart) == 0:
-#         return redirect("core:home")
-
-#     lines = ["Dolcevita — новый заказ:"]
-#     for item in cart.items_detailed():
-#         p = item["product"]
-#         lines.append(f"• {p.name} × {item['qty']} = {item['line_total']:.2f}сом")
-#     lines.append(f"Итого: {cart.total():.2f}сом")
-
-#     # необязательные поля клиента (можно добавить простую форму на cart.html)
-#     name = request.GET.get("name", "").strip()
-#     table = request.GET.get("table", "").strip()  # если dine-in
-#     note = request.GET.get("note", "").strip()
-#     if name:
-#         lines.append(f"Имя: {name}")
-#     if table:
-#         lines.append(f"Стол: {table}")
-#     if note:
-#         lines.append(f"Примечание: {note}")
-
-#     text = quote_plus("\n".join(lines))
-#     url = f"https://wa.me/{phone}?text={text}"
-
-#     # По желанию очищаем корзину после перехода:
-#     # cart.clear()
-#     return HttpResponseRedirect(url)
-
-# core/views.py
 
 def contacts(request):
     return render(request, "core/contacts.html")
