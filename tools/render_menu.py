@@ -2,7 +2,7 @@ from pathlib import Path
 import fitz  # PyMuPDF
 from PIL import Image
 
-pdf_path = Path("DOLCEMENU2025.pdf")
+pdf_path = Path("output-web.pdf")
 out_dir = Path("static/menu")
 out_dir.mkdir(parents=True, exist_ok=True)
 
