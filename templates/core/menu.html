@@ -28,20 +28,12 @@
       </a>
     </div>
 
-    <!-- Десктоп: PDF (md и выше) -->
-    <div class="hidden md:block">
-      <!-- object обычно стабильнее, чем iframe, и позволяет fallback -->
-      <object data="{{ pdf_url }}" type="application/pdf" class="w-full pdf-frame rounded-lg shadow">
-        <p class="p-4 bg-stone-50 rounded-lg">
-          {% trans "Не удалось встроить PDF. " %}
-          <a class="text-emerald-700 underline" href="{{ pdf_url }}" target="_blank">{% trans "Открыть в новой вкладке" %}</a>
-        </p>
-      </object>
-    </div>
+
 
     <!-- Мобильная галерея: WebP (только < md) -->
-    <div class="block md:hidden">
+    <div class="block ">
       {% if webp_pages %}
+      
         <!-- Вариант 1: вертикальная лента (лёгкая прокрутка) -->
         <div class="space-y-3">
           {% for url in webp_pages %}
